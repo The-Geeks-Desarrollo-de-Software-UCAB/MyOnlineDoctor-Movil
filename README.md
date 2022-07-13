@@ -1,4 +1,5 @@
 # MyOnlineDoctor-Movil
+
 Proyecto semestral: myOnlineDoctor Desarrollo de Software Escuela de Ingeniería Informática - UCAB
 Aplicacion Movil | Pacientes
 
@@ -7,3 +8,4 @@ Diego Bastardo
 Carlos Hernandez
 Miguel Cuadrado
 Vicente Mirabal
+Tomás Sánchez
