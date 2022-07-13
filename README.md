@@ -7,3 +7,4 @@ Diego Bastardo
 Carlos Hernandez
 Miguel Cuadrado
 Vicente Mirabal
+Natalia Velásquez
