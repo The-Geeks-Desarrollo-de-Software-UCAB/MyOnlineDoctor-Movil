@@ -5,3 +5,4 @@ Aplicacion Movil | Pacientes
 Integrantes:
 Diego Bastardo
 Carlos Hernandez
+Miguel Cuadrado
