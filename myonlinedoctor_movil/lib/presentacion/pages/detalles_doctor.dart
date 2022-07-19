@@ -19,7 +19,7 @@ class DetallesDoctor extends StatelessWidget {
           CustomAppBar(),
           SliverList(
             delegate: SliverChildListDelegate(
-              [_FotoNombre(doctor: doctor),
+              [FotoNombre(doctor: doctor),
               ChangeNotifierProvider(
                 create: ( _ ) => SolicitudCitaProvider(),
                 child: SolicitarCitaForm(doctor: doctor),
@@ -55,10 +55,10 @@ class CustomAppBar  extends StatelessWidget{
   }
 }
 
-class _FotoNombre extends StatelessWidget {
+class FotoNombre extends StatelessWidget {
 
   Doctor doctor;
-  _FotoNombre({Key? key,  required this.doctor}) : super(key: key);
+  FotoNombre({Key? key,  required this.doctor}) : super(key: key);
   @override
   Widget build(BuildContext context) {
 
@@ -82,6 +82,7 @@ class _FotoNombre extends StatelessWidget {
                   image: NetworkImage(this.doctor.imagen),
                   //height: 210,
                   width: 250,
+                  
             ),
           ),
           SizedBox( width: 20),
