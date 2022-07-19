@@ -56,18 +56,26 @@ class _DoctoresPage extends State<DoctoresPage> {
 
           ],
         ),
-        body: FutureBuilder(
-            future: Doctor.fetchDoctores(
-                'http://10.0.2.2:3000/doctor/get/' + e! + especialidad!),
-            builder: (BuildContext context, AsyncSnapshot snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return ListaDoctores([Doctor(id: 1, nombre: 'David', apellido: 'Rey', genero: 'M', imagen:'https://images.unsplash.com/photo-1658140917228-129162d2a5b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80' , especialidades: [Especialidades(id: 1, nombre: 'Cardiologia'), Especialidades(id: 2, nombre: 'Traumatologia')])]);
-                //return Center(child: CircularProgressIndicator());
-              } else {
-                return ListaDoctores(snapshot.data);
-              }
+        body: ListaDoctores(
+          [Doctor(id: 1, nombre: 'David', apellido: 'Rey', genero: 'M', imagen:'https://images.unsplash.com/photo-1658140917228-129162d2a5b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80' , especialidades: [Especialidades(id: 1, nombre: 'Cardiologia'), Especialidades(id: 2, nombre: 'Traumatologia')]),
+          
+          Doctor(id: 1, nombre: 'Carla', apellido: 'Cepeda', genero: 'F', imagen:'https://images.unsplash.com/photo-1585842378054-ee2e52f94ba2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80' , especialidades: [Especialidades(id: 1, nombre: 'Cardiologia'), Especialidades(id: 2, nombre: 'Traumatologia')])
+          ])
+        
+        //  FutureBuilder(
+        //     future: Doctor.fetchDoctores(
+        //         'http://10.0.2.2:3000/doctor/get/' + e! + especialidad!),
+        //     builder: (BuildContext context, AsyncSnapshot snapshot) {
+        //       if (snapshot.connectionState == ConnectionState.waiting) {
+        //         return ListaDoctores([Doctor(id: 1, nombre: 'David', apellido: 'Rey', genero: 'M', imagen:'https://images.unsplash.com/photo-1658140917228-129162d2a5b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80' , especialidades: [Especialidades(id: 1, nombre: 'Cardiologia'), Especialidades(id: 2, nombre: 'Traumatologia')])]);
+        //         //return Center(child: CircularProgressIndicator());
+        //       } else {
+        //         return ListaDoctores(snapshot.data);
+        //       }
 
               
-            }));
+        //     }
+        //   )
+          );
   }
 }
