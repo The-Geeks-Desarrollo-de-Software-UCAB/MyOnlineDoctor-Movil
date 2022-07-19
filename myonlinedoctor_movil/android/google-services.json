@@ -1,0 +1,118 @@
+{
+  "project_info": {
+    "project_number": "186343523495",
+    "project_id": "myonlinedoctor-83b1f",
+    "storage_bucket": "myonlinedoctor-83b1f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:186343523495:android:a551340106fa2a2e0e4782",
+        "android_client_info": {
+          "package_name": "com.desarrollo.myonlinedoctor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "186343523495-qjneg7a536n72nenofog479m88h175ei.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbqOlJm94Jy5v9HECn3lv3HBqoQV8bcCw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "186343523495-qjneg7a536n72nenofog479m88h175ei.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "186343523495-afbp8gadadajgic9q5vpumj3ep92a90d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.myonlinedoctorMovil"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:186343523495:android:f2c1ac6060dee05b0e4782",
+        "android_client_info": {
+          "package_name": "com.example.myonlinedoctor_movil"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "186343523495-qjneg7a536n72nenofog479m88h175ei.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbqOlJm94Jy5v9HECn3lv3HBqoQV8bcCw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "186343523495-qjneg7a536n72nenofog479m88h175ei.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "186343523495-afbp8gadadajgic9q5vpumj3ep92a90d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.myonlinedoctorMovil"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:186343523495:android:207567aae83cc4a20e4782",
+        "android_client_info": {
+          "package_name": "com.example.video"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "186343523495-qjneg7a536n72nenofog479m88h175ei.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbqOlJm94Jy5v9HECn3lv3HBqoQV8bcCw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "186343523495-qjneg7a536n72nenofog479m88h175ei.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "186343523495-afbp8gadadajgic9q5vpumj3ep92a90d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.myonlinedoctorMovil"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
