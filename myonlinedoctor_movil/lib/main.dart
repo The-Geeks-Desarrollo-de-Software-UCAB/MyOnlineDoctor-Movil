@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/doctores_page.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -10,9 +12,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Material App',
       home: Scaffold(
-        body: Center(
-          child: DoctoresPage()
-        ),
+        body: Center(child: DoctoresPage()),
       ),
     );
   }
