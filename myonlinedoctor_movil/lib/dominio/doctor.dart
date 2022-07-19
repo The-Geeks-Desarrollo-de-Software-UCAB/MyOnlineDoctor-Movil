@@ -3,7 +3,6 @@
 //     final welcome = welcomeFromMap(jsonString);
 //import 'dart:js';
 
-
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:typed_data';
@@ -17,7 +16,8 @@ class Doctor {
       required this.apellido,
       required this.genero,
       required this.imagen,
-      required this.especialidades});
+      required this.especialidades,
+      required this.calificaciones});
 
   int id;
   String nombre;
@@ -25,6 +25,7 @@ class Doctor {
   String genero;
   String imagen;
   List<Especialidades> especialidades;
+  List<double> calificaciones;
   // factory Doctor.fromJson(String str) => Doctor.fromMap(json.decode(str));
 
   List<Object?> get props => [id, nombre, apellido, genero, imagen];
@@ -42,9 +43,7 @@ class Doctor {
 
   static List<Doctor> parseDoctores(String responseBody) {
     final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
-    return parsed
-        .map<Doctor>((json) => Doctor.fromJson(json))
-        .toList();
+    return parsed.map<Doctor>((json) => Doctor.fromJson(json)).toList();
   }
 
   List<Especialidades> listaEspecialidades(List<dynamic> l) {
@@ -63,29 +62,23 @@ class Doctor {
         genero: json["genero"],
         imagen: json["imagen"],
         especialidades:
-            Especialidades.parseEspecialidadesLista(json["especialidades"]));
+            Especialidades.parseEspecialidadesLista(json["especialidades"]),
+        calificaciones: json["promedioCalificacion"]);
   }
 
-  String getEspecialidadesToString(){
+  String getEspecialidadesToString() {
+    String especialidades = '';
 
-    String especialidades='';
-    
-    for(var i in this.especialidades){
-      especialidades = especialidades + i.nombre+ ', ';
+    for (var i in this.especialidades) {
+      especialidades = especialidades + i.nombre + ', ';
     }
     final pos = especialidades.length - 2;
-    final resultado =  especialidades.substring(0,pos) + '.';
-    
+    final resultado = especialidades.substring(0, pos) + '.';
+
     return resultado;
-
-
   }
 
-
-List<Especialidades> getespecialidades(){
-  return this.especialidades;
+  List<Especialidades> getespecialidades() {
+    return this.especialidades;
+  }
 }
-
-}
-
-
