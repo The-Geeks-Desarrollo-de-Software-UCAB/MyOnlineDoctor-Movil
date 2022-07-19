@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:myonlinedoctor_movil/dominio/cita.dart';
 
 import '../dominio/doctor.dart';
+import '../dominio/especialidades.dart';
+import '../presentacion/pages/detallecita.dart';
 import '../presentacion/pages/detalles_doctor.dart';
 
 
@@ -30,9 +33,14 @@ class ListaDoctores extends StatelessWidget {
             subtitle:Text(doctor.getEspecialidadesToString()) ,
             trailing: const Icon(Icons.arrow_forward_ios_outlined),
             onTap:(){
-
+               
               final route= MaterialPageRoute(builder: (context)=>  DetallesDoctor(doctor: doctor,) );
-              Navigator.push(context, route);
+             
+
+                // final route= MaterialPageRoute(builder: (context)=>  DetalleCita(cita: Cita(doctor: doctor, 
+                //                                                                   especialidad: Especialidades(id: 2, nombre: 'Traumatologia'), 
+                //                                                                   fecha: DateTime(2022,7,20,20,0)),) );
+                Navigator.push(context, route);
 
 
             } ,
