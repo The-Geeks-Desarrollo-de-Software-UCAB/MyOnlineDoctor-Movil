@@ -3,6 +3,7 @@ import 'package:myonlinedoctor_movil/dominio/cita.dart';
 
 import '../dominio/doctor.dart';
 import '../dominio/especialidades.dart';
+import '../dominio/paciente.dart';
 import '../presentacion/pages/detallecita.dart';
 import '../presentacion/pages/detalles_doctor.dart';
 
@@ -34,12 +35,39 @@ class ListaDoctores extends StatelessWidget {
             trailing: const Icon(Icons.arrow_forward_ios_outlined),
             onTap:(){
                
-              final route= MaterialPageRoute(builder: (context)=>  DetallesDoctor(doctor: doctor,) );
+              //final route= MaterialPageRoute(builder: (context)=>  DetallesDoctor(doctor: doctor,) );
              
-
-                // final route= MaterialPageRoute(builder: (context)=>  DetalleCita(cita: Cita(doctor: doctor, 
-                //                                                                   especialidad: Especialidades(id: 2, nombre: 'Traumatologia'), 
-                //                                                                   fecha: DateTime(2022,7,20,20,0)),) );
+ final route= MaterialPageRoute(builder: (context)=>  DetalleCita(cita: Cita(Paciente(id_paciente: 5 , 
+                                    usuario: 'Vicente', 
+                                    contrasena: '1234', 
+                                    primerNomre: 'Vicente', 
+                                    segundoNombre: 'Rafael', 
+                                    primerApellido: 'Mirabal', 
+                                    segundoApellido: 'Bucci', 
+                                    genero: 'M', 
+                                    longitud: '10 11 12', 
+                                    latitud: '10 11 12', 
+                                    promedioCalificacion: 10, 
+                                    imagen: 'https://i.ibb.co/KbQL38r/hombre5.jpg'), 
+                                    'Lesion muscular',
+                                    'prueba 1',
+                                     AppoimentState.SOLICITADA, Doctor(
+                                              id: 1,
+                                              nombre: 'David',
+                                              apellido: 'Rey',
+                                              genero: 'M',
+                                              imagen: 'https://i.ibb.co/KbQL38r/hombre5.jpg',
+                                              especialidades: [
+                                                Especialidades(id: 1, nombre: 'Cardiologia'),
+                                                Especialidades(id: 2, nombre: 'Traumatologia')
+                                              ],
+                                              calificaciones: [
+                                                4.0
+                                              ]),
+                                              
+                                ) 
+                          )
+                    );
                 Navigator.push(context, route);
 
 
