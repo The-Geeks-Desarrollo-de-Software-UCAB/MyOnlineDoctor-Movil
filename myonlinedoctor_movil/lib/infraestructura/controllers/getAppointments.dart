@@ -18,8 +18,8 @@ class GetRequestedAppoiment {
       print(jsonAppoiments); // punto de control.
 
       for (var appoiment in jsonAppoiments) {
-        appoiment.add(Cita('Patricio', 'Lesion muscular', 'prueba 1',
-            AppoimentState.SOLICITADA)); //modificar
+        //     appoiment.add(Cita('Patricio', 'Lesion muscular', 'prueba 1',
+        //       AppoimentState.SOLICITADA)); //modificar
       }
     } else {
       throw Exception("Fallo la conexion");
@@ -44,8 +44,8 @@ class GetAppoimentMock {
     // punto de control.
 
     for (var appoiments in jsonAppoiments) {
-      appoiment.add(Cita(appoiments["paciente"], appoiments["motivo"],
-          appoiments["id_cita"], AppoimentState.SOLICITADA));
+      // appoiment.add(Cita(appoiments["paciente"], appoiments["motivo"],
+      //   appoiments["id_cita"], AppoimentState.SOLICITADA));
     }
 
     return appoiment;
