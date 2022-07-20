@@ -10,13 +10,33 @@ class SuccesfulRatingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Inicio'),
-          BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Calificar')
-        ],
-        backgroundColor: AppColors.MAINCOLOR3,
-        selectedItemColor: AppColors.WHITE,
+      bottomNavigationBar: Container(
+        height: 60,
+        color: AppColors.MAINCOLOR3,
+        child: InkWell(
+          onTap: () => {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => HomePage()))
+          },
+          child: Padding(
+            padding: EdgeInsets.only(top: 9.0),
+            child: Column(
+              children: <Widget>[
+                Icon(
+                  Icons.house,
+                  color: Colors.white,
+                ),
+                Text(
+                  'Inicio',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w400),
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
       appBar: AppBar(
         automaticallyImplyLeading: false,

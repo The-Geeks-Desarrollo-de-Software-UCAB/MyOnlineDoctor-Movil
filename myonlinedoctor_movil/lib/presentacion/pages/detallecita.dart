@@ -8,6 +8,7 @@ import 'package:permission_handler/permission_handler.dart';
 import '../../aplicacion/videollamada/call.dart';
 import '../../dominio/cita.dart';
 import 'detalles_doctor.dart';
+import 'helpers/appcolors.dart';
 
 class DetalleCita extends StatefulWidget {
   Cita cita;
@@ -28,7 +29,27 @@ class _DetalleCita extends State<DetalleCita> {
       title: 'Material App',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Cita - My Online Doctor'),
+          leading: InkWell(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Icon(
+              Icons.arrow_back_ios,
+              color: AppColors.WHITE,
+            ),
+          ),
+          centerTitle: true,
+          title: Text("Detalles de cita"),
+          flexibleSpace: Container(
+            decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.bottomLeft,
+                    end: Alignment.topRight,
+                    colors: <Color>[
+                  AppColors.MAINCOLOR1,
+                  AppColors.MAINCOLOR2
+                ])),
+          ),
         ),
         body: SingleChildScrollView(
           child: Container(
@@ -54,8 +75,8 @@ class _DetalleCita extends State<DetalleCita> {
                   },
                   child: const Text('Unirse a la llamada'),
                   style: ElevatedButton.styleFrom(
-                    minimumSize: const Size(double.infinity, 40),
-                  ),
+                      minimumSize: const Size(double.infinity, 40),
+                      primary: Colors.cyan),
                 )
               ],
             ),

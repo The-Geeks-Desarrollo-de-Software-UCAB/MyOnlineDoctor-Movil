@@ -7,6 +7,7 @@ import 'package:myonlinedoctor_movil/presentacion/pages/helpers/citaAgendada.dar
 import '../../dominio/cita.dart';
 import '../../infraestructura/controllers/getAppointments.dart';
 import '../../infraestructura/moveAppointments.dart';
+import 'doctores_page.dart';
 import 'helpers/customtext.dart';
 
 class HomePage extends StatefulWidget {
@@ -23,6 +24,34 @@ class _HomePage extends State<HomePage> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
+      bottomNavigationBar: Container(
+        height: 60,
+        color: AppColors.MAINCOLOR3,
+        child: InkWell(
+          onTap: () => {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => DoctoresPage()))
+          },
+          child: Padding(
+            padding: EdgeInsets.only(top: 9.0),
+            child: Column(
+              children: <Widget>[
+                Icon(
+                  Icons.search,
+                  color: Colors.white,
+                ),
+                Text(
+                  'Buscar doctores',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w400),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
       body: Stack(
         children: <Widget>[
           Container(
@@ -70,6 +99,9 @@ class _HomePage extends State<HomePage> {
                           ])
                     ],
                   ),
+                ),
+                SizedBox(
+                  height: 20,
                 ),
                 Expanded(
                     child: FutureBuilder(

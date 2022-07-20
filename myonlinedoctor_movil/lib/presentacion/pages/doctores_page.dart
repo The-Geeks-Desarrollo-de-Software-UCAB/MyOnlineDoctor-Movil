@@ -7,6 +7,7 @@ import '../../aplicacion/search_delegate.dart';
 import '../../dominio/doctor.dart';
 import '../../dominio/especialidades.dart';
 import 'helpers/appcolors.dart';
+import 'homePage.dart';
 
 class DoctoresPage extends StatefulWidget {
   const DoctoresPage({Key? key}) : super(key: key);
@@ -31,6 +32,34 @@ class _DoctoresPage extends State<DoctoresPage> {
     ];
 
     return Scaffold(
+        bottomNavigationBar: Container(
+          height: 60,
+          color: AppColors.MAINCOLOR3,
+          child: InkWell(
+            onTap: () => {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => HomePage()))
+            },
+            child: Padding(
+              padding: EdgeInsets.only(top: 9.0),
+              child: Column(
+                children: <Widget>[
+                  Icon(
+                    Icons.house,
+                    color: Colors.white,
+                  ),
+                  Text(
+                    'Inicio',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w400),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
         appBar: AppBar(
           flexibleSpace: Container(
             decoration: BoxDecoration(
