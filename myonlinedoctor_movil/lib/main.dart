@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Material App',
 
-      home: SplashPage(duration: 3, goToPage: DoctoresPage()),
+      home: SplashPage(duration: 3, goToPage: HomePage()),
 
       //home: SplashPage(duration: 3, goToPage: DoctoresPage()),
     );
