@@ -50,9 +50,10 @@ class _DetalleCita extends State<DetalleCita> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Fecha: '+ widget.cita.date.toString()),
-                  //Text('Fecha: '+widget.cita.date.day.toString()+ '-'+widget.cita.fecha.month.toString()+'-'+widget.cita.fecha.year.toString()),
+                  Text('Fecha: '+ widget.cita.date.toString().substring(8,11)+'-'+ widget.cita.date.toString().substring(5,8)+widget.cita.date.toString().substring(0,4)),
+                 // Text('Fecha: '+widget.cita.date.day.toString()+ '-'+widget.cita.date!.month.toString()+'-'+widget.cita.date!.year.toString()),
                   SizedBox(width:30),
+                  Text('Hora: '+ widget.cita.date.toString().substring(11,16)),
                  // Text('Hora: '+widget.cita.fecha.hour.toString()+ ':'+widget.cita.fecha.minute.toString()+''+widget.cita.fecha.second.toString()),
               ],),
               SizedBox(height:20),
