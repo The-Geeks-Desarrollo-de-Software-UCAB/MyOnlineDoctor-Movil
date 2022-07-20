@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:myonlinedoctor_movil/aplicacion/trazabilidad/AnalyticsService.dart';
-import 'package:myonlinedoctor_movil/aplicacion/trazabilidad/ITrazabilidadService.dart';
-import 'package:myonlinedoctor_movil/locator.dart';
+//import 'package:myonlinedoctor_movil/aplicacion/trazabilidad/AnalyticsService.dart';
+//import 'package:myonlinedoctor_movil/aplicacion/trazabilidad/ITrazabilidadService.dart';
+//import 'package:myonlinedoctor_movil/locator.dart';
 import '../dominio/doctor.dart';
 import '../dominio/especialidades.dart';
 import 'listadoctores.dart';
 
 class DoctorSearchDelegate extends SearchDelegate {
+  //final AnalyticsService analyticsService = locator.get<AnalyticsService>();
+
   @override
   String? get searchFieldLabel => 'Buscar Doctor';
 
@@ -41,7 +43,7 @@ class DoctorSearchDelegate extends SearchDelegate {
           imagen:
               'https://images.unsplash.com/photo-1559035636-a99258c3d0b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
           especialidades: [Especialidades(id: 1, nombre: 'Cardiologia')],
-          calificaciones: [1.0, 5.0])
+          calificaciones: [1.0])
     ];
 
     //GetLista de Doctores Basado en el Query
