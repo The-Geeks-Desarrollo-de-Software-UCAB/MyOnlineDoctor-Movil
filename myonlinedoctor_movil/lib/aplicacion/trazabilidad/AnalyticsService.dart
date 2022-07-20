@@ -18,8 +18,9 @@ class AnalyticsService extends TrazabilidadService {
     await analytics.logSearch(searchTerm: busqueda);
   }
 
-  Future logSolicitudCita() async {
-    await analytics.logEvent(name: 'solicitar_Cita');
+  Future logSolicitudCita(String especialidad) async {
+    await analytics.logEvent(
+        name: 'solicitar_Cita', parameters: {'especialidad': especialidad});
   }
 
   Future iniciarVideollamada() async {

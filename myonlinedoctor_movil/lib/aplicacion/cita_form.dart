@@ -1,6 +1,10 @@
 // ignore_for_file: must_be_immutable, unnecessary_this, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:myonlinedoctor_movil/aplicacion/servicio_cita/CitaService.dart';
+import 'package:myonlinedoctor_movil/aplicacion/trazabilidad/AnalyticsService.dart';
+import 'package:myonlinedoctor_movil/data.dart';
+import 'package:myonlinedoctor_movil/locator.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/helpers/appcolors.dart';
 import '../dominio/doctor.dart';
 import '../dominio/especialidades.dart';
@@ -22,7 +26,8 @@ class SolicitarCitaFormState extends State<SolicitarCitaForm> {
   String? especialidad = '';
   String? tipoCita = '';
   String? motivo = '';
-
+  AnalyticsService analyticsService = locator.get<AnalyticsService>();
+  CitaService citaService = locator.get<CitaService>();
   @override
   Widget build(BuildContext context) {
     final citaForm = Provider.of<SolicitudCitaProvider>(context);
@@ -132,6 +137,9 @@ class SolicitarCitaFormState extends State<SolicitarCitaForm> {
                           citaForm.isloading = true;
                           //VALIDAR SI LA SOLICITUD DE LA CITA ES VALIDA
                           //SE HACE LA SOLICITUD AQUI
+                          citaService.requestCita(motivo!, tipoCita!,
+                              especialidad!, id_doctor, id_paciente);
+                          analyticsService.logSolicitudCita(especialidad!);
                           String result = 'CITA SOLICITADA';
                           final route = MaterialPageRoute(
                               builder: (context) => ResultadoSolicitudCita(
