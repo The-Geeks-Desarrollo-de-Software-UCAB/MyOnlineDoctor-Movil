@@ -18,11 +18,24 @@ class AnalyticsService extends TrazabilidadService {
     await analytics.logSearch(searchTerm: busqueda);
   }
 
-  Future logSolictudCita() async {
-    await analytics.logEvent(name: 'Solicitar Cita');
+  Future logSolicitudCita() async {
+    await analytics.logEvent(name: 'solicitar_Cita');
   }
 
   Future iniciarVideollamada() async {
-    await analytics.logEvent(name: "Iniciar Videollamada");
+    await analytics.logEvent(name: "iniciar_Videollamada");
+  }
+
+  Future finalizarVideollamada() async {
+    await analytics.logEvent(name: "finalizar_Videollamada");
+  }
+
+  Future busquedaEspecialidad(String especialidad) async {
+    await analytics.logEvent(
+        name: "Busco_Especialidad", parameters: {'especialidad': especialidad});
+  }
+
+  Future abrirDoctor() async {
+    await analytics.logEvent(name: "abrir_doctor");
   }
 }

@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:myonlinedoctor_movil/aplicacion/trazabilidad/AnalyticsService.dart';
 import 'package:myonlinedoctor_movil/dominio/cita.dart';
+import 'package:myonlinedoctor_movil/locator.dart';
 
 import '../dominio/doctor.dart';
 import '../dominio/especialidades.dart';
 import '../presentacion/pages/detallecita.dart';
 import '../presentacion/pages/detalles_doctor.dart';
 
-
 class ListaDoctores extends StatelessWidget {
   final List<Doctor> doctores;
-
+  final AnalyticsService analyticsService = locator.get<AnalyticsService>();
   ListaDoctores(this.doctores);
   @override
   Widget build(BuildContext context) {
@@ -29,21 +30,22 @@ class ListaDoctores extends StatelessWidget {
               backgroundImage: NetworkImage(doctor.imagen),
               maxRadius: 30,
             )),
-            title: Text(generoDr + '${doctor.nombre}' + ' ' + '${doctor.apellido}'),
-            subtitle:Text(doctor.getEspecialidadesToString()) ,
+            title: Text(
+                generoDr + '${doctor.nombre}' + ' ' + '${doctor.apellido}'),
+            subtitle: Text(doctor.getEspecialidadesToString()),
             trailing: const Icon(Icons.arrow_forward_ios_outlined),
-            onTap:(){
-               
-              final route= MaterialPageRoute(builder: (context)=>  DetallesDoctor(doctor: doctor,) );
-             
-
-                // final route= MaterialPageRoute(builder: (context)=>  DetalleCita(cita: Cita(doctor: doctor, 
-                //                                                                   especialidad: Especialidades(id: 2, nombre: 'Traumatologia'), 
-                //                                                                   fecha: DateTime(2022,7,20,20,0)),) );
-                Navigator.push(context, route);
-
-
-            } ,
+            onTap: () {
+              //final route= MaterialPageRoute(builder: (context)=>  DetallesDoctor(doctor: doctor,) );
+              final route = MaterialPageRoute(
+                  builder: (context) => DetalleCita(
+                        cita: Cita(
+                            doctor: doctor,
+                            especialidad:
+                                Especialidades(id: 2, nombre: 'Traumatologia'),
+                            fecha: DateTime(2022, 7, 20, 20, 0)),
+                      ));
+              Navigator.push(context, route);
+            },
           );
         });
   }

@@ -7,8 +7,10 @@ import 'package:agora_rtc_engine/rtc_engine.dart';
 import 'dart:async';
 import 'package:agora_rtc_engine/rtc_local_view.dart' as rtc_local_view;
 import 'package:agora_rtc_engine/rtc_remote_view.dart' as rtc_remote_view;
+import 'package:myonlinedoctor_movil/aplicacion/trazabilidad/AnalyticsService.dart';
 
 import 'package:myonlinedoctor_movil/aplicacion/videollamada/utils/settings.dart';
+import 'package:myonlinedoctor_movil/locator.dart';
 
 class CallPage extends StatefulWidget {
   final String? channelName;
@@ -24,6 +26,7 @@ class CallPage extends StatefulWidget {
 }
 
 class _CallPageState extends State<CallPage> {
+  final AnalyticsService analyticsService = locator.get<AnalyticsService>();
   final _users = <int>[];
   final _infoStrings = <String>[];
   bool muted = false;
@@ -67,6 +70,7 @@ class _CallPageState extends State<CallPage> {
     await _engine.setVideoEncoderConfiguration(configuration);
 
     await _engine.joinChannel(token, widget.channelName!, null, 0);
+    analyticsService.iniciarVideollamada();
   }
 
   void _addAgoraEventHandlers() {
@@ -156,7 +160,10 @@ class _CallPageState extends State<CallPage> {
             padding: const EdgeInsets.all(12.0),
           ),
           RawMaterialButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: () {
+              analyticsService.finalizarVideollamada();
+              Navigator.pop(context);
+            },
             child: const Icon(
               Icons.call_end,
               color: Colors.white,

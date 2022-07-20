@@ -8,8 +8,6 @@ import '../dominio/especialidades.dart';
 import 'listadoctores.dart';
 
 class DoctorSearchDelegate extends SearchDelegate {
-  final AnalyticsService analyticsService = locator.get<AnalyticsService>();
-
   @override
   String? get searchFieldLabel => 'Buscar Doctor';
 
