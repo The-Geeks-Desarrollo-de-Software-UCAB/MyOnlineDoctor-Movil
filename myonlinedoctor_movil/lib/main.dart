@@ -23,13 +23,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
-<<<<<<< HEAD
-      home: Scaffold(
-        body: Center(child: DoctoresPage()),
-      ),
-=======
+
       home: SplashPage(duration: 3, goToPage: DoctoresPage()),
->>>>>>> vistas-y-correcciones-esteticas
     );
   }
 }
