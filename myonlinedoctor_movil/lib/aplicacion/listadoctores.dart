@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:myonlinedoctor_movil/aplicacion/trazabilidad/AnalyticsService.dart';
 import 'package:myonlinedoctor_movil/dominio/cita.dart';
+import 'package:myonlinedoctor_movil/locator.dart';
 
 import '../dominio/doctor.dart';
 import '../dominio/especialidades.dart';
@@ -8,10 +10,9 @@ import '../dominio/paciente.dart';
 import '../presentacion/pages/detallecita.dart';
 import '../presentacion/pages/detalles_doctor.dart';
 
-
 class ListaDoctores extends StatelessWidget {
   final List<Doctor> doctores;
-
+  final AnalyticsService analyticsService = locator.get<AnalyticsService>();
   ListaDoctores(this.doctores);
   @override
   Widget build(BuildContext context) {
@@ -31,23 +32,23 @@ class ListaDoctores extends StatelessWidget {
               backgroundImage: NetworkImage(doctor.imagen),
               maxRadius: 30,
             )),
-            title: Text(generoDr + '${doctor.nombre}' + ' ' + '${doctor.apellido}'),
-            subtitle:Text(doctor.getEspecialidadesToString()) ,
+            title: Text(
+                generoDr + '${doctor.nombre}' + ' ' + '${doctor.apellido}'),
+            subtitle: Text(doctor.getEspecialidadesToString()),
             trailing: const Icon(Icons.arrow_forward_ios_outlined),
-            onTap:(){
-               
-              //  Cita cita = Cita(Paciente(id_paciente: 5 , 
-              //                       usuario: 'Vicente', 
-              //                       contrasena: '1234', 
-              //                       primerNomre: 'Vicente', 
-              //                       segundoNombre: 'Rafael', 
-              //                       primerApellido: 'Mirabal', 
-              //                       segundoApellido: 'Bucci', 
-              //                       genero: 'M', 
-              //                       longitud: '10 11 12', 
-              //                       latitud: '10 11 12', 
-              //                       promedioCalificacion: 10, 
-              //                       imagen: 'https://i.ibb.co/KbQL38r/hombre5.jpg'), 
+            onTap: () {
+              //  Cita cita = Cita(Paciente(id_paciente: 5 ,
+              //                       usuario: 'Vicente',
+              //                       contrasena: '1234',
+              //                       primerNomre: 'Vicente',
+              //                       segundoNombre: 'Rafael',
+              //                       primerApellido: 'Mirabal',
+              //                       segundoApellido: 'Bucci',
+              //                       genero: 'M',
+              //                       longitud: '10 11 12',
+              //                       latitud: '10 11 12',
+              //                       promedioCalificacion: 10,
+              //                       imagen: 'https://i.ibb.co/KbQL38r/hombre5.jpg'),
               //                       'Lesion muscular',
               //                       'prueba 1',
               //                        AppoimentState.SOLICITADA, Doctor(
@@ -63,20 +64,20 @@ class ListaDoctores extends StatelessWidget {
               //                                 calificaciones: [
               //                                   4.0
               //                                 ]),
-                                              
+
               //                   );
-              //    cita.date = DateTime(2022, 7, 20, 17, 30);               
-              
-             
-              //  final route= MaterialPageRoute(builder: (context)=>  DetalleCita(cita: cita 
+              //    cita.date = DateTime(2022, 7, 20, 17, 30);
+
+              //  final route= MaterialPageRoute(builder: (context)=>  DetalleCita(cita: cita
               //             )
               //       );
 
-                final route= MaterialPageRoute(builder: (context)=>  DetallesDoctor(doctor: doctor,) );
-                Navigator.push(context, route);
-
-
-            } ,
+              final route = MaterialPageRoute(
+                  builder: (context) => DetallesDoctor(
+                        doctor: doctor,
+                      ));
+              Navigator.push(context, route);
+            },
           );
         });
   }

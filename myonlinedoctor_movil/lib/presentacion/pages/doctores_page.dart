@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:myonlinedoctor_movil/aplicacion/trazabilidad/AnalyticsService.dart';
+import 'package:myonlinedoctor_movil/locator.dart';
 
 import '../../aplicacion/listadoctores.dart';
 import '../../aplicacion/search_delegate.dart';
@@ -20,6 +22,7 @@ class _DoctoresPage extends State<DoctoresPage> {
   String opcionPorDefecto = 'Especialidad';
   String? especialidad = '';
   String? e = '';
+  final AnalyticsService analyticsService = locator.get<AnalyticsService>();
   @override
   Widget build(BuildContext context) {
     //final especialidadesProvider = Provider.of<EspecialidadesProvider>(context);
@@ -92,6 +95,7 @@ class _DoctoresPage extends State<DoctoresPage> {
                       } else {
                         e = 'e/';
                         especialidad = a?.nombre;
+                        analyticsService.busquedaEspecialidad(especialidad!);
                         opcionPorDefecto = especialidad!;
                       }
                     }),

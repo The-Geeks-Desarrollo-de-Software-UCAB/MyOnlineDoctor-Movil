@@ -3,6 +3,8 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:agora_rtc_engine/rtc_engine.dart';
+import 'package:myonlinedoctor_movil/aplicacion/trazabilidad/AnalyticsService.dart';
+import 'package:myonlinedoctor_movil/locator.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import '../../aplicacion/videollamada/call.dart';
@@ -25,6 +27,10 @@ class _DetalleCita extends State<DetalleCita> {
   @override
   Widget build(BuildContext context) {
     DateTime? fecha = widget.cita.date;
+  final AnalyticsService analyticsService = locator.get<AnalyticsService>();
+  @override
+  Widget build(BuildContext context) {
+    analyticsService.abrirDoctor();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',

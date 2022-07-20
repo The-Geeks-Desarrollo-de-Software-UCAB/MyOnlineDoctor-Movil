@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:myonlinedoctor_movil/dominio/doctor.dart';
 import 'package:myonlinedoctor_movil/locator.dart';
+import 'package:myonlinedoctor_movil/presentacion/pages/detalles_doctor.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/doctores_page.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/homePage.dart';
 
