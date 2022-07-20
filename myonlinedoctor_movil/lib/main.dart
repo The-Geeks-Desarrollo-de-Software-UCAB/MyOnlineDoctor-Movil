@@ -23,12 +23,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
-<<<<<<< HEAD
-      home: SplashPage(duration: 3, goToPage: HomePage()),
-=======
 
-      home: SplashPage(duration: 3, goToPage: DoctoresPage()),
->>>>>>> cb7e1a57ca9e4add722ffa212d941ba0883bf3f2
+      home: SplashPage(duration: 3, goToPage: HomePage()),
+
+
+      //home: SplashPage(duration: 3, goToPage: DoctoresPage()),
+
     );
   }
 }
