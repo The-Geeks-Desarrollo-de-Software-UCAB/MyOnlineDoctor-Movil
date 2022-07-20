@@ -50,14 +50,15 @@ class _DetalleCita extends State<DetalleCita> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Fecha: '+widget.cita.fecha.day.toString()+ '-'+widget.cita.fecha.month.toString()+'-'+widget.cita.fecha.year.toString()),
+                  Text('Fecha: '+ widget.cita.date.toString()),
+                  //Text('Fecha: '+widget.cita.date.day.toString()+ '-'+widget.cita.fecha.month.toString()+'-'+widget.cita.fecha.year.toString()),
                   SizedBox(width:30),
-                  Text('Hora: '+widget.cita.fecha.hour.toString()+ ':'+widget.cita.fecha.minute.toString()+''+widget.cita.fecha.second.toString()),
+                 // Text('Hora: '+widget.cita.fecha.hour.toString()+ ':'+widget.cita.fecha.minute.toString()+''+widget.cita.fecha.second.toString()),
               ],),
               SizedBox(height:20),
         
                  ElevatedButton(
-                  onPressed: widget.cita.fecha.compareTo(DateTime.now()) >= 0 && (widget.cita.fecha.add(Duration(hours: 2)).compareTo(DateTime.now())) <= 1 ? null :  (){
+                  onPressed: widget.cita.date!.compareTo( DateTime.now()) >= 0 && (widget.cita.date!.add(const Duration(hours: 2)).compareTo(DateTime.now())) <= 1 ? null :  (){
                   
                    onJoin();
                   } , 

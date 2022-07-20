@@ -36,69 +36,95 @@ class SolicitarCitaFormState extends State<SolicitarCitaForm> {
       child: Form(
         key: citaForm.formKey,
         child: Column(
-          children: [
-            DropdownButton<Especialidades>(
-                items: items
-                    .map<DropdownMenuItem<Especialidades>>((Especialidades a) {
-                  return DropdownMenuItem<Especialidades>(
-                    value: a,
-                    child: Text(a.nombre),
-                  );
-                }).toList(),
-                onChanged: (Especialidades? a) => setState(() {
-                      citaForm.especialidad = a;
-                      especialidad = a?.nombre;
-                      opcionporDefecto = especialidad!;
-                      print(opcionporDefecto);
-                    }),
-                hint: Text(opcionporDefecto)),
-            RadioListTile(
-              title: const Text('Presencial'),
-              onChanged: (String? value) {
-                setState(() {
-                  tipoCita = value;
-                });
-              },
-              value: 'PRESENCIAL',
-              groupValue: tipoCita,
-            ),
-            RadioListTile(
-              title: const Text('Virtual'),
-              onChanged: (String? value) {
-                setState(() {
-                  tipoCita = value;
-                });
-              },
-              value: 'VIRTUAL',
-              groupValue: tipoCita,
-            ),
-            TextFormField(
-              autofocus: false,
-              initialValue: '',
-              onChanged: (String value) {
-                setState(() {
-                  motivo = value;
-                });
-              },
-              validator: (value) {
-                if (value == null) return 'Campo requerido';
+           
+            // mainAxisAlignment: MainAxisAlignment.start,
+            // crossAxisAlignment: CrossAxisAlignment.start,
+            
+            children: [
+                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                     children: [
+                       Expanded(
+                         child: DropdownButton<Especialidades>(                    
+                          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10),
+                              topRight: Radius.circular(10)),                            
+                          items: items
+                              .map<DropdownMenuItem<Especialidades>>((Especialidades a) {
+                            return DropdownMenuItem<Especialidades>(
+                              value: a,
+                              child: Text(a.nombre),
+                            );
+                          }).toList(),
+                          onChanged: (Especialidades? a) => setState(() {
+                                 citaForm.especialidad =a;                      
+                                 especialidad = a?.nombre;
+                                 opcionporDefecto = especialidad!;
+                                 print(opcionporDefecto);
+                              }),
+                          hint: Text(opcionporDefecto)
+                         ),
+                       ),
+                     ],
+                   ),                
+                  Row(children: [
+                    Expanded(child: RadioListTile(
+                                    title: const Text('Presencial'),
+                                    onChanged: (String? value) {
+                                      setState(() {
+                                      tipoCita = value;
+                                      });
+                                    },
+                                    value: 'PRESENCIAL',
+                                    groupValue: tipoCita,
+                                  ),
+                    ),
+                  Expanded(child: RadioListTile(
+                                  title: const Text('Virtual'),             
+                                  onChanged: (String? value) {
+                                    setState(() {
+                                      tipoCita = value;
+                                    });
+                                  },
+                                  value: 'VIRTUAL',
+                                  groupValue: tipoCita,
+                                  ),
+                    )
+                  ],),
+                  
+                
+              TextFormField(
+                autofocus: false,
+                initialValue: '',
+                onChanged: (String value) {
+                  setState(() {
+                    motivo = value;
+                  });
+                  
+                },
 
-                if (value.length <= 1) return 'Campo requerido';
-              },
-              autovalidateMode: AutovalidateMode.onUserInteraction,
-              decoration: const InputDecoration(
-                hintText: 'Motivo de cita',
-                labelText: 'Motivo',
-                suffixIcon: Icon(
-                  Icons.app_registration_rounded,
-                  color: Colors.grey,
-                ),
-                border: OutlineInputBorder(
+                validator: (value){
+
+                  if(value ==  null) return 'Campo requerido';
+
+                  if(value.length <=1 ) return 'Campo requerido';
+
+                },
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                decoration: const InputDecoration(
+                  hintText: 'Motivo de cita',
+                  labelText: 'Motivo',
+                  suffixIcon: Icon(Icons.app_registration_rounded, color: Colors.grey,),
+                  
+                  border: OutlineInputBorder(
                     borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(10),
-                        topRight: Radius.circular(10))),
-              ),
-            ),
+                      bottomLeft: Radius.circular(10),
+                      topRight: Radius.circular(10) )
+                      ),
+                ),
+
+                
+              ), 
             SizedBox(height: 20),
             ElevatedButton(
                 onPressed: citaForm.isloading ||

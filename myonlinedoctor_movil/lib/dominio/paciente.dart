@@ -18,7 +18,7 @@ class Paciente{
   
   });
 
-  Int id_paciente;
+  int id_paciente;
   String usuario;
   String contrasena;
   String primerNomre;
@@ -28,6 +28,6 @@ class Paciente{
   String genero;
   String longitud;
   String latitud;
-  Double promedioCalificacion;
+  double promedioCalificacion;
   String imagen;
 }
