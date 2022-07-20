@@ -92,11 +92,11 @@ class FotoNombre extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(generoDr+' '+this.doctor.nombre +' '+ this.doctor.apellido, overflow: TextOverflow.ellipsis, maxLines: 2, style: TextStyle(fontSize: 20, fontStyle: FontStyle.italic,fontWeight: FontWeight.bold,) ),
+              Text(generoDr+' '+this.doctor.nombre +' '+ this.doctor.apellido, overflow: TextOverflow.ellipsis, maxLines: 2, style: TextStyle(fontSize: 15, fontStyle: FontStyle.italic,fontWeight: FontWeight.bold,) ),
               SizedBox(height: 10),
               //Text('Especialidad: ', style: TextStyle(fontSize: 15), textAlign: TextAlign.left),
               Text(this.doctor.getEspecialidadesToString(), overflow: TextOverflow.ellipsis, maxLines: 2),
-              SizedBox(height: 20),
+              SizedBox(height: 15),
               Text('Calificacion Promedio', overflow: TextOverflow.ellipsis, maxLines: 2),
 
             ],
