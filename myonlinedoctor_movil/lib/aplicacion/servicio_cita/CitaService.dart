@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class CitaService {
-  String url = "localhost";
+  String url = "http://localhost:3000/api/cita/Solicitar";
   crearCita(dynamic obj) {}
 
   requestCita(dynamic obj) async {
