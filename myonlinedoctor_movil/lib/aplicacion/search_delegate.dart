@@ -37,14 +37,14 @@ class DoctorSearchDelegate extends SearchDelegate {
   Widget buildResults(BuildContext context) {
     final DoctoresListExample = [
       Doctor(
-          id: 3,
+          id: '3',
           nombre: 'Vicente',
           apellido: 'Mirabal',
           genero: 'M',
           imagen:
               'https://images.unsplash.com/photo-1559035636-a99258c3d0b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
           especialidades: [Especialidades(id: 1, nombre: 'Cardiologia')],
-          calificaciones: [1.0])
+          calificaciones: null)
     ];
 
     //GetLista de Doctores Basado en el Query
@@ -68,14 +68,14 @@ class DoctorSearchDelegate extends SearchDelegate {
 
     final DoctoresListExample = [
       Doctor(
-          id: 3,
+          id: '3',
           nombre: 'Vicente',
           apellido: 'Mirabal',
           genero: 'M',
           imagen:
               'https://images.unsplash.com/photo-1559035636-a99258c3d0b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
           especialidades: [Especialidades(id: 1, nombre: 'Cardiologia')],
-          calificaciones: [2.0])
+          calificaciones: 2.0)
     ];
     return ListaDoctores(DoctoresListExample);
   }

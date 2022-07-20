@@ -25,7 +25,7 @@ class Especialidades {
     List<Especialidades> list = [];
 
     for (var item in response) {
-      list.add(Especialidades(id: item['id'], nombre: item['nombre']));
+      list.add(Especialidades(id: item['id_especialidad'], nombre: item['nombre']));
     }
     return list;
   }
@@ -38,6 +38,6 @@ class Especialidades {
   }
 
   factory Especialidades.fromJson(Map<dynamic, dynamic> json) {
-    return Especialidades(id: json["id"], nombre: json["nombre"]);
+    return Especialidades(id: json["id_especialidad"], nombre: json["nombre"]);
   }
 }
