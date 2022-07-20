@@ -28,8 +28,10 @@ class _DetalleCita extends State<DetalleCita> {
 
 
 
+
   @override
   Widget build(BuildContext context) {
+    DateTime? fecha = widget.cita.date;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
@@ -59,7 +61,8 @@ class _DetalleCita extends State<DetalleCita> {
               SizedBox(height:20),
         
                  ElevatedButton(
-                  onPressed:  (){
+                  onPressed:  
+                    ()  {
                   
                    onJoin();
                   } , 
