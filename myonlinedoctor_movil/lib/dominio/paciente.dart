@@ -1,22 +1,19 @@
 import 'dart:ffi';
 
-class Paciente{
-
-  Paciente({
-  required this.id_paciente, 
-  required this.usuario, 
-  required this.contrasena, 
-  required this.primerNomre, 
-  required this.segundoNombre, 
-  required this.primerApellido,
-  required this.segundoApellido,
-  required this.genero,
-  required this.longitud,
-  required this.latitud,
-  required this.promedioCalificacion,
-  required this.imagen
-  
-  });
+class Paciente {
+  Paciente(
+      {required this.id_paciente,
+      required this.usuario,
+      required this.contrasena,
+      required this.primerNomre,
+      required this.segundoNombre,
+      required this.primerApellido,
+      required this.segundoApellido,
+      required this.genero,
+      required this.longitud,
+      required this.latitud,
+      required this.promedioCalificacion,
+      required this.imagen});
 
   int id_paciente;
   String usuario;

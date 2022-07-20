@@ -98,20 +98,20 @@ Widget listToDayAppoimentCard(
     BuildContext context, List<Cita> citas, double width) {
   // ScheduledAppoiment storedAppoiment = ScheduledAppoiment();
 
-  for (final value in citas) {
+  /* for (final value in citas) {
     scheduledAppoiments.add(value);
-  }
+  }*/
 
   return ListView.builder(
       scrollDirection: Axis.vertical,
       shrinkWrap: true,
-      itemCount: scheduledAppoiments.length,
+      itemCount: citas.length,
       itemBuilder: ((context, index) {
         return Container(
             padding:
                 const EdgeInsets.only(left: 30, right: 30, top: 30, bottom: 30),
             child: CitaAgendadaCard(
-              cita: scheduledAppoiments.elementAt(index),
+              cita: citas[index],
               topColor: const Color(0xFF0FAB98),
             ));
       }));
