@@ -41,7 +41,7 @@ class GetRequestedAppoiment {
           'prueba 1',
           AppoimentState.SOLICITADA,
           Doctor(
-              id: 1,
+              id: '1',
               nombre: 'David',
               apellido: 'Rey',
               genero: 'M',
@@ -50,9 +50,9 @@ class GetRequestedAppoiment {
                 Especialidades(id: 1, nombre: 'Cardiologia'),
                 Especialidades(id: 2, nombre: 'Traumatologia')
               ],
-              calificaciones: [
+              calificaciones: 
                 4.0
-              ]),
+              ),
         )); //modificar
       }
     } else {
@@ -95,7 +95,7 @@ class GetAppoimentMock {
         appoiments["id_cita"],
         AppoimentState.SOLICITADA,
         Doctor(
-            id: 1,
+            id: '1',
             nombre: 'David',
             apellido: 'Rey',
             genero: 'M',
@@ -104,9 +104,9 @@ class GetAppoimentMock {
               Especialidades(id: 1, nombre: 'Cardiologia'),
               Especialidades(id: 2, nombre: 'Traumatologia')
             ],
-            calificaciones: [
+            calificaciones: 
               4.0
-            ]),
+            ),
       ));
     }
 

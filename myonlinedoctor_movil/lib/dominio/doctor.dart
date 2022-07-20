@@ -3,6 +3,8 @@
 //     final welcome = welcomeFromMap(jsonString);
 //import 'dart:js';
 
+import 'dart:ffi';
+
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:typed_data';
@@ -17,21 +19,21 @@ class Doctor {
       required this.genero,
       required this.imagen,
       required this.especialidades,
-      required this.calificaciones});
+       this.calificaciones});
 
-  int id;
+  String id;
   String nombre;
   String apellido;
   String genero;
   String imagen;
   List<Especialidades> especialidades;
-  List<double> calificaciones;
+  double? calificaciones;
   // factory Doctor.fromJson(String str) => Doctor.fromMap(json.decode(str));
 
   List<Object?> get props => [id, nombre, apellido, genero, imagen];
 
   static Future<List<Doctor>> fetchDoctores(String especialidad) async {
-    final response = await http.get(Uri.parse(especialidad));
+    final response = await http.get(Uri.parse('http://10.0.2.2:3000/api/doctorSpecialty/all'));
     if (response.statusCode == 200) {
       List<Doctor> list = parseDoctores(response.body);
       return list;
@@ -56,9 +58,9 @@ class Doctor {
 
   factory Doctor.fromJson(Map<dynamic, dynamic> json) {
     return Doctor(
-        id: json["id"],
-        nombre: json["nombre"],
-        apellido: json["apellido"],
+        id: json["id_doctor"],
+        nombre: json["primerNombre"],
+        apellido: json["primerApellido"],
         genero: json["genero"],
         imagen: json["imagen"],
         especialidades:
