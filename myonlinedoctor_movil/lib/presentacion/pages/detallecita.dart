@@ -24,33 +24,32 @@ class _DetalleCita extends State<DetalleCita> {
 
   @override
   Widget build(BuildContext context) {
+    DateTime? fecha = widget.cita.date;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
       home: Scaffold(
         appBar: AppBar(
-          leading: InkWell(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Icon(
-              Icons.arrow_back_ios,
-              color: AppColors.WHITE,
+            centerTitle: true,
+            title: Text("Detalles de cita"),
+            flexibleSpace: Container(
+              decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.bottomLeft,
+                      end: Alignment.topRight,
+                      colors: <Color>[
+                    AppColors.MAINCOLOR1,
+                    AppColors.MAINCOLOR2
+                  ])),
             ),
-          ),
-          centerTitle: true,
-          title: Text("Detalles de cita"),
-          flexibleSpace: Container(
-            decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.bottomLeft,
-                    end: Alignment.topRight,
-                    colors: <Color>[
-                  AppColors.MAINCOLOR1,
-                  AppColors.MAINCOLOR2
-                ])),
-          ),
-        ),
+            leading: InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Icon(
+                  Icons.arrow_back_ios,
+                  color: AppColors.WHITE,
+                ))),
         body: SingleChildScrollView(
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 20),
