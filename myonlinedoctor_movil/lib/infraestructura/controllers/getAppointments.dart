@@ -1,8 +1,13 @@
+import 'dart:ffi';
+
 import 'package:http/http.dart' as http;
+import 'package:myonlinedoctor_movil/dominio/doctor.dart';
+import 'package:myonlinedoctor_movil/dominio/paciente.dart';
 import 'dart:async';
 import 'dart:convert';
 
 import '../../dominio/cita.dart';
+import '../../dominio/especialidades.dart';
 
 class GetRequestedAppoiment {
   Future<List<Cita>> getAppoiment() async {
@@ -18,8 +23,37 @@ class GetRequestedAppoiment {
       print(jsonAppoiments); // punto de control.
 
       for (var appoiment in jsonAppoiments) {
-        //     appoiment.add(Cita('Patricio', 'Lesion muscular', 'prueba 1',
-        //       AppoimentState.SOLICITADA)); //modificar
+        appoiment.add(Cita(
+          Paciente(
+              id_paciente: 5,
+              usuario: 'Vicente',
+              contrasena: '1234',
+              primerNomre: 'Vicente',
+              segundoNombre: 'Rafael',
+              primerApellido: 'Mirabal',
+              segundoApellido: 'Bucci',
+              genero: 'M',
+              longitud: '10 11 12',
+              latitud: '10 11 12',
+              promedioCalificacion: 10,
+              imagen: 'https://i.ibb.co/KbQL38r/hombre5.jpg'),
+          'Lesion muscular',
+          'prueba 1',
+          AppoimentState.SOLICITADA,
+          Doctor(
+              id: 1,
+              nombre: 'David',
+              apellido: 'Rey',
+              genero: 'M',
+              imagen: 'https://i.ibb.co/KbQL38r/hombre5.jpg',
+              especialidades: [
+                Especialidades(id: 1, nombre: 'Cardiologia'),
+                Especialidades(id: 2, nombre: 'Traumatologia')
+              ],
+              calificaciones: [
+                4.0
+              ]),
+        )); //modificar
       }
     } else {
       throw Exception("Fallo la conexion");
@@ -44,8 +78,25 @@ class GetAppoimentMock {
     // punto de control.
 
     for (var appoiments in jsonAppoiments) {
-      // appoiment.add(Cita(appoiments["paciente"], appoiments["motivo"],
-      //   appoiments["id_cita"], AppoimentState.SOLICITADA));
+      appoiment.add(Cita(
+        appoiments["paciente"],
+        appoiments["motivo"],
+        appoiments["id_cita"],
+        AppoimentState.SOLICITADA,
+        Doctor(
+            id: 1,
+            nombre: 'David',
+            apellido: 'Rey',
+            genero: 'M',
+            imagen: 'https://i.ibb.co/KbQL38r/hombre5.jpg',
+            especialidades: [
+              Especialidades(id: 1, nombre: 'Cardiologia'),
+              Especialidades(id: 2, nombre: 'Traumatologia')
+            ],
+            calificaciones: [
+              4.0
+            ]),
+      ));
     }
 
     return appoiment;

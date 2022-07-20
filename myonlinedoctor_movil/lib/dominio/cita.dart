@@ -5,27 +5,18 @@ import 'package:myonlinedoctor_movil/dominio/especialidades.dart';
 
 import 'paciente.dart';
 
-class Cita {
-  Cita(
-      {required this.doctor,
-      required this.especialidad,
-      required this.fecha,
-      required this.id_cita,
-      required this.duracion,
-      required this.tipoCita,
-      required this.estadoCita,
-      required this.motivo,
-      required this.calificaion,
-      required this.paciente});
+import 'package:flutter/material.dart';
 
-  Int id_cita;
-  DateTime fecha;
-  Int duracion;
-  String tipoCita;
-  String estadoCita;
-  String motivo;
-  Int calificaion;
+enum AppoimentState { CANCELADA, RECHAZADA, AGENDADA, SOLICITADA }
+
+class Cita {
+  final String id_cita;
+  final Paciente paciente;
+  final String motivo;
+  AppoimentState state;
+  DateTime? date;
+  TimeOfDay? time;
   Doctor doctor;
-  Especialidades especialidad;
-  Paciente paciente;
+
+  Cita(this.paciente, this.motivo, this.id_cita, this.state, this.doctor);
 }
