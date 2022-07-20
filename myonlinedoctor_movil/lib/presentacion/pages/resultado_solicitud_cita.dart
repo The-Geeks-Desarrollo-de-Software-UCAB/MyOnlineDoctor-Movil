@@ -41,8 +41,8 @@ class ResultadoSolicitudCita extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
-                        children: [Icon( icon ,color:color, size: 70 ,),
-                        Text(resultado, style: TextStyle(fontSize: 35, color:color),),
+                        children: [Icon( icon ,color:color, size: 50 ,),
+                        Text(resultado, style: TextStyle(fontSize: 30, color:color),),
                         ],
                       ),
                      Text(mensaje, style: TextStyle(fontSize: 20, color:color),),

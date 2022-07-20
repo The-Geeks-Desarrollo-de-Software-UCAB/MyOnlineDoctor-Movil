@@ -81,7 +81,8 @@ class FotoNombre extends StatelessWidget {
                   placeholder: NetworkImage('https://images.unsplash.com/photo-1588421357574-87938a86fa28?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'), 
                   image: NetworkImage(this.doctor.imagen),
                   //height: 210,
-                  width: 250,
+                  width: 150,
+                  height: 200,
                   
             ),
           ),
