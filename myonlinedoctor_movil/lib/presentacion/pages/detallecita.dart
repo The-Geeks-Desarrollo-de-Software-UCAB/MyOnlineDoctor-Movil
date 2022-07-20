@@ -58,7 +58,7 @@ class _DetalleCita extends State<DetalleCita> {
               SizedBox(height:20),
         
                  ElevatedButton(
-                  onPressed: widget.cita.date!.compareTo( DateTime.now()) >= 0 && (widget.cita.date!.add(const Duration(hours: 2)).compareTo(DateTime.now())) <= 1 ? null :  (){
+                  onPressed:  (){
                   
                    onJoin();
                   } , 
