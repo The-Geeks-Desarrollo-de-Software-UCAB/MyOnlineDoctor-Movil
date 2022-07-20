@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:myonlinedoctor_movil/aplicacion/servicio_cita/CitaService.dart';
+import 'package:myonlinedoctor_movil/data.dart';
+import 'package:myonlinedoctor_movil/locator.dart';
 import 'package:smooth_star_rating_null_safety/smooth_star_rating_null_safety.dart';
 
 import '../succesfulRatingPage.dart';
@@ -12,9 +15,10 @@ class Rating extends StatefulWidget {
 }
 
 class _Rating extends State<Rating> {
+  String id_cita = "123719cb-6057-43c1-bcfb-0ea125a6ccb7";
   double ratingValue = 0;
   bool isloading = false;
-
+  CitaService citaService = locator.get<CitaService>();
   @override
   Widget build(BuildContext context) {
     return Column(children: [
@@ -39,10 +43,12 @@ class _Rating extends State<Rating> {
       ),
       ElevatedButton(
         child: Text('Enviar'),
-        onPressed: () => {
-          print(ratingValue),
+        onPressed: () {
+          citaService.terminarCita(id_doctor, id_cita);
+          citaService.calificarCita(id_cita, ratingValue, id_paciente);
+          print(ratingValue);
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => SuccesfulRatingPage()))
+              MaterialPageRoute(builder: (context) => SuccesfulRatingPage()));
         },
         style: ElevatedButton.styleFrom(
             primary: AppColors.MAINCOLOR3,

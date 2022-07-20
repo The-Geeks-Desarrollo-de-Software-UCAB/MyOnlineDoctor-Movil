@@ -11,6 +11,7 @@ import 'package:myonlinedoctor_movil/aplicacion/trazabilidad/AnalyticsService.da
 
 import 'package:myonlinedoctor_movil/aplicacion/videollamada/utils/settings.dart';
 import 'package:myonlinedoctor_movil/locator.dart';
+import 'package:myonlinedoctor_movil/presentacion/pages/ratingPage.dart';
 
 class CallPage extends StatefulWidget {
   final String? channelName;
@@ -162,7 +163,9 @@ class _CallPageState extends State<CallPage> {
           RawMaterialButton(
             onPressed: () {
               analyticsService.finalizarVideollamada();
-              Navigator.pop(context);
+              _engine.leaveChannel();
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const RatingPage()));
             },
             child: const Icon(
               Icons.call_end,
