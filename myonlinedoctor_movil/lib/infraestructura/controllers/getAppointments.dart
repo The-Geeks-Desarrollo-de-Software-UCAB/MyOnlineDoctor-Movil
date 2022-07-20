@@ -79,7 +79,18 @@ class GetAppoimentMock {
 
     for (var appoiments in jsonAppoiments) {
       appoiment.add(Cita(
-        appoiments["paciente"],
+        Paciente(id_paciente: 5 , 
+                                    usuario: 'Vicente', 
+                                    contrasena: '1234', 
+                                    primerNomre: 'Vicente', 
+                                    segundoNombre: 'Rafael', 
+                                    primerApellido: 'Mirabal', 
+                                    segundoApellido: 'Bucci', 
+                                    genero: 'M', 
+                                    longitud: '10 11 12', 
+                                    latitud: '10 11 12', 
+                                    promedioCalificacion: 10, 
+                                    imagen: 'https://i.ibb.co/KbQL38r/hombre5.jpg'),
         appoiments["motivo"],
         appoiments["id_cita"],
         AppoimentState.SOLICITADA,
