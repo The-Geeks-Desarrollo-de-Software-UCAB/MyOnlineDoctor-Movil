@@ -24,12 +24,10 @@ class _DetalleCita extends State<DetalleCita> {
   bool _validateError = false;
   ClientRole? _role = ClientRole.Broadcaster;
 
-  @override
-  Widget build(BuildContext context) {
-    DateTime? fecha = widget.cita.date;
   final AnalyticsService analyticsService = locator.get<AnalyticsService>();
   @override
   Widget build(BuildContext context) {
+    DateTime? fecha = widget.cita.date;
     analyticsService.abrirDoctor();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
