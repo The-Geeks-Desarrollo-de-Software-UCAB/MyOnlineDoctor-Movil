@@ -33,7 +33,14 @@ class Doctor {
   List<Object?> get props => [id, nombre, apellido, genero, imagen];
 
   static Future<List<Doctor>> fetchDoctores(String especialidad) async {
-    final response = await http.get(Uri.parse('http://10.0.2.2:3000/api/doctorSpecialty/all'));
+
+    String ruta;  
+    if(especialidad ==''){
+      ruta ='http://10.0.2.2:3000/api/doctorSpecialty/all';
+    }else{
+      ruta = 'http://10.0.2.2:3000/api/doctorSpecialty/by'+especialidad;
+    }
+    final response = await http.get(Uri.parse(ruta));
     if (response.statusCode == 200) {
       List<Doctor> list = parseDoctores(response.body);
       return list;
@@ -63,7 +70,7 @@ class Doctor {
         apellido: json["primerApellido"],
         genero: json["genero"],
         imagen: json["imagen"],
-        especialidades: [Especialidades(id: 1, nombre: 'Cardiologia')],
+        especialidades: json["especialidades"] == null ? [Especialidades(id: 1, nombre: 'Cardiologia')] : Especialidades.parseEspecialidadesLista(json["especialidades"]) ,
           //  Especialidades.parseEspecialidadesLista(json["especialidades"]),
         calificaciones: json["promedioCalificacion"]);
   }

@@ -22,16 +22,24 @@ class _DoctoresPage extends State<DoctoresPage> {
   String opcionPorDefecto = 'Especialidad';
   String? especialidad = '';
   String? e = '';
+  String? id_especialidad ='';
   final AnalyticsService analyticsService = locator.get<AnalyticsService>();
   @override
   Widget build(BuildContext context) {
     //final especialidadesProvider = Provider.of<EspecialidadesProvider>(context);
     //final items = especialidadesProvider.especialidadesDisponibles;
     final items = [
-      Especialidades(id: 1, nombre: 'Cardiologia'),
-      Especialidades(id: 2, nombre: 'Traumatologia'),
-      Especialidades(id: 3, nombre: 'Geriatria'),
-      Especialidades(id: 4, nombre: 'Reumatologia')
+      Especialidades(id: 0, nombre: '...'),
+      Especialidades(id: 1, nombre: 'Alergología'),
+      Especialidades(id: 2, nombre: 'Anestesiología'),
+      Especialidades(id: 3, nombre: 'Cardiología'),
+      Especialidades(id: 4, nombre: 'Dermatología'),
+      Especialidades(id: 1, nombre: 'Endocrinología'),
+      Especialidades(id: 2, nombre: 'Geriatría'),
+      Especialidades(id: 3, nombre: 'Hematología'),
+      Especialidades(id: 4, nombre: 'Medicina interna'),
+      Especialidades(id: 3, nombre: 'Nefrología'),
+      Especialidades(id: 4, nombre: 'Neumología')
     ];
 
     return Scaffold(
@@ -92,9 +100,11 @@ class _DoctoresPage extends State<DoctoresPage> {
                         especialidad = '';
                         e = '';
                         opcionPorDefecto = 'Especialidad';
+                         id_especialidad = '';
                       } else {
                         e = 'e/';
                         especialidad = a?.nombre;
+                        id_especialidad = a?.id.toString();
                         analyticsService.busquedaEspecialidad(especialidad!);
                         opcionPorDefecto = especialidad!;
                       }
@@ -140,7 +150,7 @@ class _DoctoresPage extends State<DoctoresPage> {
 
          FutureBuilder(
             future: Doctor.fetchDoctores(
-                'http://10.0.2.2:3000/doctor/get/' + e! + especialidad!),
+                id_especialidad!),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 //return ListaDoctores([Doctor(id: 1, nombre: 'David', apellido: 'Rey', genero: 'M', imagen:'https://images.unsplash.com/photo-1658140917228-129162d2a5b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80' , especialidades: [Especialidades(id: 1, nombre: 'Cardiologia'), Especialidades(id: 2, nombre: 'Traumatologia')])]);
