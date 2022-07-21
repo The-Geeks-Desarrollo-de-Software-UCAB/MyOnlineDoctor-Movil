@@ -19,6 +19,15 @@ class CitaAgendadaCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    String prefijo ='Dra.';
+
+    if(cita.doctor.genero == 'M'){
+      prefijo = 'Dr.';
+    }
+
+
+
     return InkWell(
         onTap: onTap,
         child: Container(
@@ -62,7 +71,7 @@ class CitaAgendadaCard extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         )),
                     TextSpan(
-                        text: "Doctor: ${cita.doctor}\n",
+                        text: prefijo + " ${cita.doctor.nombre}  ${cita.doctor.apellido} \n",
                         style: TextStyle(
                             fontSize: 16,
                             color: isActive ?? false
