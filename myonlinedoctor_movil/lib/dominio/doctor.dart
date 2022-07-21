@@ -63,8 +63,8 @@ class Doctor {
         apellido: json["primerApellido"],
         genero: json["genero"],
         imagen: json["imagen"],
-        especialidades:
-            Especialidades.parseEspecialidadesLista(json["especialidades"]),
+        especialidades: [Especialidades(id: 1, nombre: 'Cardiologia')],
+          //  Especialidades.parseEspecialidadesLista(json["especialidades"]),
         calificaciones: json["promedioCalificacion"]);
   }
 

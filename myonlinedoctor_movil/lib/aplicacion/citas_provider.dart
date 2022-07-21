@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../dominio/cita.dart';
 import '../dominio/doctor.dart';
 import '../dominio/especialidades.dart';
 
-
+import '../data.dart';
+import 'package:http/http.dart' as http;
 
 class SolicitudCitaProvider extends ChangeNotifier {
 
@@ -33,6 +35,19 @@ class SolicitudCitaProvider extends ChangeNotifier {
 
   }
 
+  getcitasDoctor() async {
+
+
+    final response = await http.get(Uri.parse('http://10.0.2.2:3000/api/doctorSpecialty/all'));
+    //final citasresponse = Cita.fromJson(response.body);
+
+    //print(citasresponse.doctor.apellido);
+
+
+
+  }
+
 
 
 }
+

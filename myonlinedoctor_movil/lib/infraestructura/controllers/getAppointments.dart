@@ -9,7 +9,7 @@ import 'dart:convert';
 import '../../dominio/cita.dart';
 import '../../dominio/especialidades.dart';
 
-class GetRequestedAppoiment {
+/*class GetRequestedAppoiment {
   Future<List<Cita>> getAppoiment() async {
     final response = await http.get(Uri.parse(
         "https://gentle-river-68727.herokuapp.com/doctors")); // modificar con url de conexion con API
@@ -64,7 +64,7 @@ class GetRequestedAppoiment {
 }
 
 //Test
-class GetAppoimentMock {
+/*class GetAppoimentMock {
   Future<List<Cita>> getAppoiment() async {
     final response = await Future.delayed(
         const Duration(seconds: 2),
@@ -82,14 +82,14 @@ class GetAppoimentMock {
         Paciente(id_paciente: 5 , 
                                     usuario: 'Vicente', 
                                     contrasena: '1234', 
-                                    primerNomre: 'Vicente', 
+                                    primerNombre: 'Vicente', 
                                     segundoNombre: 'Rafael', 
                                     primerApellido: 'Mirabal', 
                                     segundoApellido: 'Bucci', 
                                     genero: 'M', 
                                     longitud: '10 11 12', 
                                     latitud: '10 11 12', 
-                                    promedioCalificacion: 10, 
+                                    
                                     imagen: 'https://i.ibb.co/KbQL38r/hombre5.jpg'),
         appoiments["motivo"],
         appoiments["id_cita"],
@@ -112,4 +112,4 @@ class GetAppoimentMock {
 
     return appoiment;
   }
-}
+}*/*/

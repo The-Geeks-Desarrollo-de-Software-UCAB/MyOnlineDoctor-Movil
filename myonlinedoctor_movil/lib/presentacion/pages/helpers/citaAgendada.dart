@@ -53,7 +53,7 @@ class CitaAgendadaCard extends StatelessWidget {
                   textAlign: TextAlign.center,
                   text: TextSpan(children: [
                     TextSpan(
-                        text: "Cita: ${cita.id_cita}\n",
+                        //text: "Cita: ${cita.id_cita}\n",
                         style: TextStyle(
                           fontSize: 16,
                           color: isActive ?? false
