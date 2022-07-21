@@ -18,7 +18,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePage extends State<HomePage> {
-  final GetAppoimentMock test = GetAppoimentMock();
+  //final GetAppoimentMock test = GetAppoimentMock();
 
   @override
   Widget build(BuildContext context) {
@@ -103,9 +103,9 @@ class _HomePage extends State<HomePage> {
                 SizedBox(
                   height: 20,
                 ),
-                Expanded(
-                    child: FutureBuilder(
-                        future: test.getAppoiment(),
+                 Expanded(
+                     child: FutureBuilder(
+                        future: Cita.fetchCitas(''),
                         builder: (BuildContext context, snapshot) {
                           if (snapshot.connectionState ==
                               ConnectionState.waiting) {
