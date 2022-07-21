@@ -11,7 +11,7 @@ class Especialidades {
   List<Object?> get props => [id, nombre];
 
   static Future<List<Especialidades>> fetchEspecialidades() async {
-    const url = 'http://192.168.250.2:3000/especialidad/get/';
+    const url = 'http://192.168.24.241:3000/especialidad/get/';
     final response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
       List<Especialidades> list = parseEspecialidades(response.body);

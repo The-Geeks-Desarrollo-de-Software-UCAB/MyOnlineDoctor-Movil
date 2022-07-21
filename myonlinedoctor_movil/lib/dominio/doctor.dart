@@ -36,9 +36,9 @@ class Doctor {
 
     String ruta;  
     if(especialidad ==''){
-      ruta ='http://192.168.250.2:3000/api/doctorSpecialty/all';
+      ruta ='http://192.168.24.241:3000/api/doctorSpecialty/all';
     }else{
-      ruta = 'http://192.168.250.2:3000/api/doctorSpecialty/by'+especialidad;
+      ruta = 'http://192.168.24.241:3000/api/doctorSpecialty/by'+especialidad;
     }
     final response = await http.get(Uri.parse(ruta));
     if (response.statusCode == 200) {
