@@ -34,12 +34,12 @@ class _DoctoresPage extends State<DoctoresPage> {
       Especialidades(id: 2, nombre: 'Anestesiología'),
       Especialidades(id: 3, nombre: 'Cardiología'),
       Especialidades(id: 4, nombre: 'Dermatología'),
-      Especialidades(id: 1, nombre: 'Endocrinología'),
-      Especialidades(id: 2, nombre: 'Geriatría'),
-      Especialidades(id: 3, nombre: 'Hematología'),
-      Especialidades(id: 4, nombre: 'Medicina interna'),
-      Especialidades(id: 3, nombre: 'Nefrología'),
-      Especialidades(id: 4, nombre: 'Neumología')
+      Especialidades(id: 5, nombre: 'Endocrinología'),
+      Especialidades(id: 6, nombre: 'Geriatría'),
+      Especialidades(id: 7, nombre: 'Hematología'),
+      Especialidades(id: 8, nombre: 'Medicina interna'),
+      Especialidades(id: 9, nombre: 'Nefrología'),
+      Especialidades(id: 10, nombre: 'Neumología')
     ];
 
     return Scaffold(

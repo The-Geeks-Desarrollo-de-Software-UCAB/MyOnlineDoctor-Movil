@@ -37,7 +37,7 @@ class Cita {
     Paciente paciente;
 
   static Future<List<Cita>> fetchCitas(String idDoctor) async {
-    final response = await http.get(Uri.parse('http://10.0.2.2:3000/api/cita/AgendadasPacientefdbf1a1a-be97-4337-a029-f45df5a2e0ea'));
+    final response = await http.get(Uri.parse('http://192.168.250.2:3000/api/cita/AgendadasPacientefdbf1a1a-be97-4337-a029-f45df5a2e0ea'));
 
     if (response.statusCode == 200) {
       List<Cita> list = parseCitas(response.body);

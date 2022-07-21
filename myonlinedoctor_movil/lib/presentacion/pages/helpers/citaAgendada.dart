@@ -79,7 +79,7 @@ class CitaAgendadaCard extends StatelessWidget {
                                 : AppColors.MAINCOLOR3,
                             fontWeight: FontWeight.bold)),
                     TextSpan(
-                        text: "Fecha: 14/9/22\n",
+                        text: "Fecha: ${cita.fecha.toString().substring(0,10)}\n",
                         style: TextStyle(
                             fontSize: 16,
                             color: isActive ?? false
