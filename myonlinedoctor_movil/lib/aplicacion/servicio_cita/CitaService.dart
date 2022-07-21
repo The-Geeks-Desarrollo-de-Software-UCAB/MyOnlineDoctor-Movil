@@ -6,7 +6,7 @@ import 'package:uuid/uuid.dart';
 import 'package:uuid/uuid_util.dart';
 
 class CitaService {
-  String url = "http://10.0.0.2:3000/api/cita/Solicitar";
+  String url = "http://10.0.2.2:3000/api/cita/Solicitar";
   crearCita(String motivo, String tipo, String especialidad, String doctor,
       String paciente) {
     Map<String, dynamic> body = {

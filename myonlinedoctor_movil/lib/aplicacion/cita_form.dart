@@ -138,7 +138,7 @@ class SolicitarCitaFormState extends State<SolicitarCitaForm> {
                           //VALIDAR SI LA SOLICITUD DE LA CITA ES VALIDA
                           //SE HACE LA SOLICITUD AQUI
                           citaService.requestCita(motivo!, tipoCita!,
-                              especialidad!, id_doctor, id_paciente);
+                              especialidad!, widget.doctor.id, id_paciente);
                           analyticsService.logSolicitudCita(especialidad!);
                           String result = 'CITA SOLICITADA';
                           final route = MaterialPageRoute(
