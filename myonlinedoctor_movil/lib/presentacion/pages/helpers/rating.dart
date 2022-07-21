@@ -15,7 +15,7 @@ class Rating extends StatefulWidget {
 }
 
 class _Rating extends State<Rating> {
-  String id_cita = "123719cb-6057-43c1-bcfb-0ea125a6ccb7";
+  String id_cita = "7ee4c73a-607f-4685-a53e-69aec0d45d";
   double ratingValue = 0;
   bool isloading = false;
   CitaService citaService = locator.get<CitaService>();

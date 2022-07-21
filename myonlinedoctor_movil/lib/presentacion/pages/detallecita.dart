@@ -91,7 +91,7 @@ class _DetalleCita extends State<DetalleCita> {
         context, 
         MaterialPageRoute(
           builder: (context)=> CallPage(
-            channelName: 'test123',
+            channelName: 'testvicente',
             role: _role,
           ),
         ),
