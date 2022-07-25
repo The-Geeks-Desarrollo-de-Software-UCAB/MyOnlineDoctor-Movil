@@ -19,7 +19,13 @@ Aplicacion Movil | Pacientes
 | Se permite solicitar cita para determinado doctor. Y se decoró con la trazabilidad |[**Solicitar Cita Use Case y Trazabilidad de Eventos**](https://github.com/The-Geeks-Desarrollo-de-Software-UCAB/MyOnlineDoctor-Movil/commit/52ad2617f922ac94e0d29dc733eec3000c3bd51c)|
 | Conexión con el backend para Terminar y Calificar cita|[**Conexión con el backend para Terminar y Calificar cita**](https://github.com/The-Geeks-Desarrollo-de-Software-UCAB/MyOnlineDoctor-Movil/commit/8521ee67495561fb2ff0975b14b8a1e5d0fc8f90)|
 
-
+### Natalia Velásquez
+| Descripción  |Links|
+| ------------- |:-------------:|
+| Se agregaron vistas de splash page, login, evaluar doctor y pantalla de éxito de evaluación.|[**Se agregaron vistas a la aplicación**](https://github.com/The-Geeks-Desarrollo-de-Software-UCAB/MyOnlineDoctor-Movil/commit/92b5b521fddcb2a68dc306ec5d1d4a1bbe32d28f)|
+| Se agregaron algunos controladores. |[**Modificaciones y detalles.**](https://github.com/The-Geeks-Desarrollo-de-Software-UCAB/MyOnlineDoctor-Movil/commit/9ea935009a2e3e2390de0c712d2fab9110ae229e)|
+| Creación inicial de la vista de Homepage del Paciente. |[**Implementación Homepage Paciente**](https://github.com/The-Geeks-Desarrollo-de-Software-UCAB/MyOnlineDoctor-Movil/commit/ce98be1d2ac52afaa0a23777d93394621999e1a3)|
+| Arreglados algunos errores del homepage y facilitada la navegacion entre vistas con una barra inferior. |[**Homepage del paciente y detalle citas**](https://github.com/The-Geeks-Desarrollo-de-Software-UCAB/MyOnlineDoctor-Movil/commit/bb96949b06a839cc2c194db4afbcc3cab13ad969)|
 
 Integrantes:
 Diego Bastardo
