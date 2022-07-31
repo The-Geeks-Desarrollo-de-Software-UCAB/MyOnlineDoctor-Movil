@@ -41,6 +41,19 @@ class CitaService {
         body: {"id_paciente": id_paciente, "id_cita": id, "calificacion": val});
   }
 
+
+  aceptarCita(String id,  String id_paciente) async {
+    return await http.put(
+        Uri.parse("http://192.168.24.241:3000/api/cita/Aceptar"),
+        body: {"id_paciente": id_paciente, "id_cita": id});
+  }
+
+  rechazarCita(String id,  String id_paciente) async {
+    return await http.put(
+        Uri.parse("http://192.168.24.241:3000/api/cita/Rechazar"),
+        body: {"id_paciente": id_paciente, "id_cita": id});
+  }
+
   agendadasPaciente(String id_paciente) async {
     return await http.get(Uri.parse(
         "http://192.168.24.241:3000/api/cita/AgendadasPaciente" + id_paciente));

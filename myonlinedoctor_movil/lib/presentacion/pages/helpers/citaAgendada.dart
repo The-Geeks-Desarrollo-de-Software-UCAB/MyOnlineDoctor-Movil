@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/detallecita.dart';
+import 'package:myonlinedoctor_movil/presentacion/pages/detallecitaSolicitada.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/helpers/appcolors.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/loginPage.dart';
 
@@ -25,6 +26,8 @@ class CitaAgendadaCard extends StatelessWidget {
     if(cita.doctor.genero == 'M'){
       prefijo = 'Dr.';
     }
+
+    dynamic route;
 
 
 
@@ -95,13 +98,13 @@ class CitaAgendadaCard extends StatelessWidget {
                       padding: const EdgeInsets.all(10),
                       child: ElevatedButton(
                           style: ElevatedButton.styleFrom(primary: Colors.cyan),
-                          onPressed: () => {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => DetalleCita(
-                                              cita: cita,
-                                            )))
+                          onPressed: () {
+                                if(cita.estadoCita == 'AGENDADA'){
+                                  route = MaterialPageRoute(builder: (context) => DetalleCita(cita: cita));
+                                }else{
+                                route = MaterialPageRoute(builder: (context) => DetalleCitaSolicitada(cita: cita));
+                                }
+                                 Navigator.pushAndRemoveUntil(context, route, (route) => false);
                               },
                           child: const CustomText(
                               text: "Ver detalles",
