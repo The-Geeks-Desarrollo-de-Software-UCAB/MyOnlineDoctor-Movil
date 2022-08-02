@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:myonlinedoctor_movil/dominio/registro_medico.dart';
+import 'package:myonlinedoctor_movil/presentacion/pages/historia_medica.dart';
 
 import 'detalles_doctor.dart';
 
@@ -21,6 +22,13 @@ class DetalleRegistro extends StatelessWidget {
       home: Scaffold(  
         appBar: AppBar(
           title: Text('Registro Médico - My Online Doctor'),
+          
+          leading:IconButton(
+              onPressed:(){
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => HistoriaMedica()));
+              }, 
+              icon:Icon(Icons.arrow_back)) ,
         ),
       body: SingleChildScrollView(
         child: Container(

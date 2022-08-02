@@ -50,7 +50,7 @@ class Cita {
 
   static Future<List<Cita>> fetchCitasAgendadas(String id_pac) async {
     final response = await http.get(Uri.parse(
-        'https://myonlinedoctorapi.herokuapp.com/api/cita/AceptadasPaciente' +
+        'https://myonlinedoctorapi.herokuapp.com/api/cita/AgendadasPaciente' +
             id_pac));
 
     if (response.statusCode == 200) {

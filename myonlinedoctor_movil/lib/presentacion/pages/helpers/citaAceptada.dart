@@ -8,13 +8,13 @@ import '../../../dominio/cita.dart';
 import '../doctores_page.dart';
 import 'customtext.dart';
 
-class CitaAgendadaCard extends StatelessWidget {
+class CitaAceptadaCard extends StatelessWidget {
   final Cita cita;
   final Color? topColor;
   final bool? isActive;
   final void Function()? onTap;
 
-  const CitaAgendadaCard(
+  const CitaAceptadaCard(
       {Key? key, required this.cita, this.topColor, this.isActive, this.onTap})
       : super(key: key);
 
@@ -98,9 +98,9 @@ class CitaAgendadaCard extends StatelessWidget {
                           style: ElevatedButton.styleFrom(primary: Colors.cyan),
                           onPressed: () {
                             
-                            route = MaterialPageRoute(
+                              route = MaterialPageRoute(
                                   builder: (context) =>
-                                      DetalleCitaAgendada(cita: cita));
+                                      DetalleCita(cita: cita));
                             
                             Navigator.pushAndRemoveUntil(
                                 context, route, (route) => false);

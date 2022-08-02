@@ -1,7 +1,7 @@
 // ignore_for_file: file_names, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:myonlinedoctor_movil/presentacion/pages/homePage.dart';
+import 'package:myonlinedoctor_movil/presentacion/pages/homePageAgendada.dart';
 
 import 'doctores_page.dart';
 import 'helpers/appcolors.dart';

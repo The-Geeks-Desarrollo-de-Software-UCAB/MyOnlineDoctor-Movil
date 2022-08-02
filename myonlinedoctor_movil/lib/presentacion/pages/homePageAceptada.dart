@@ -1,24 +1,25 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:myonlinedoctor_movil/data.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/helpers/appcolors.dart';
-import 'package:myonlinedoctor_movil/presentacion/pages/helpers/citaAgendada.dart';
+import 'package:myonlinedoctor_movil/presentacion/pages/helpers/citaAceptada.dart';
+import 'package:myonlinedoctor_movil/presentacion/pages/homePageAgendada.dart';
 
 import '../../dominio/cita.dart';
 import '../../infraestructura/controllers/getAppointments.dart';
 import '../../infraestructura/moveAppointments.dart';
 import 'doctores_page.dart';
+import 'helpers/citaAgendada.dart';
 import 'helpers/customtext.dart';
+import 'historia_medica.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class HomePageAceptada extends StatefulWidget {
+  const HomePageAceptada({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePage();
+  State<HomePageAceptada> createState() => _HomePageAceptada();
 }
 
-class _HomePage extends State<HomePage> {
+class _HomePageAceptada extends State<HomePageAceptada> {
   //final GetAppoimentMock test = GetAppoimentMock();
 
   @override
@@ -28,29 +29,87 @@ class _HomePage extends State<HomePage> {
       bottomNavigationBar: Container(
         height: 60,
         color: AppColors.MAINCOLOR3,
-        child: InkWell(
-          onTap: () => {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => DoctoresPage()))
-          },
-          child: Padding(
-            padding: EdgeInsets.only(top: 9.0),
-            child: Column(
-              children: <Widget>[
-                Icon(
-                  Icons.search,
-                  color: Colors.white,
-                ),
-                Text(
-                  'Buscar doctores',
-                  style: TextStyle(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            InkWell(
+              onTap: () => {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => HistoriaMedica()))
+              },
+              child: Padding(
+                padding: EdgeInsets.only(top: 9.0),
+                child: Column(
+                  children: <Widget>[
+                    Icon(
+                      Icons.receipt_long_sharp,
                       color: Colors.white,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400),
+                    ),
+                    Text(
+                      'Historia Médica',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w400),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
-          ),
+            SizedBox(width: 20,),
+            InkWell(
+              onTap: () => {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => DoctoresPage()))
+              },
+              child: Padding(
+                padding: EdgeInsets.only(top: 9.0),
+                child: Column(
+                  children: <Widget>[
+                    Icon(
+                      Icons.search,
+                      color: Colors.white,
+                    ),
+                    Text(
+                      'Buscar doctores',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w400),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            SizedBox(width: 20,),
+            InkWell(
+              onTap: () => {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => HomePage()))
+              },
+              child: Padding(
+                padding: EdgeInsets.only(top: 9.0),
+                child: Column(
+                  children: <Widget>[
+                    Icon(
+                      Icons.access_time_outlined,
+                      color: Colors.white,
+                    ),
+                    Text(
+                      'Citas Agendadas',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w400),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+
+          ],
         ),
       ),
       body: Stack(
@@ -143,7 +202,7 @@ Widget listToDayAppoimentCard(
         return Container(
             padding:
                 const EdgeInsets.only(left: 30, right: 30, top: 30, bottom: 30),
-            child: CitaAgendadaCard(
+            child: CitaAceptadaCard(
               cita: citas[index],
               topColor: const Color(0xFF0FAB98),
             ));

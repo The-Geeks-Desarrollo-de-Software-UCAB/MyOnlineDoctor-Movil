@@ -9,7 +9,7 @@ import '../../aplicacion/search_delegate.dart';
 import '../../dominio/doctor.dart';
 import '../../dominio/especialidades.dart';
 import 'helpers/appcolors.dart';
-import 'homePage.dart';
+import 'homePageAgendada.dart';
 
 class HistoriaMedica extends StatefulWidget {
   const HistoriaMedica({Key? key}) : super(key: key);
@@ -68,6 +68,13 @@ class _HistoriaMedica extends State<HistoriaMedica> {
             'HistoriaMedica',
             style: TextStyle(color: AppColors.WHITE),
           ),
+
+          leading:IconButton(
+              onPressed:(){
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => HomePage()));
+              }, 
+              icon:Icon(Icons.arrow_back)) ,
         ),
         body: 
          FutureBuilder(

@@ -9,7 +9,7 @@ import '../../aplicacion/search_delegate.dart';
 import '../../dominio/doctor.dart';
 import '../../dominio/especialidades.dart';
 import 'helpers/appcolors.dart';
-import 'homePage.dart';
+import 'homePageAgendada.dart';
 
 class DoctoresPage extends StatefulWidget {
   const DoctoresPage({Key? key}) : super(key: key);

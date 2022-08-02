@@ -14,15 +14,15 @@ import '../../dominio/cita.dart';
 import '../../locator.dart';
 import 'detalles_doctor.dart';
 
-class DetalleCitaSolicitada extends StatefulWidget {
+class DetalleCitaAgendada extends StatefulWidget {
   Cita cita;
-  DetalleCitaSolicitada({Key? key, required this.cita}) : super(key: key);
+  DetalleCitaAgendada({Key? key, required this.cita}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _DetalleCitaSolicitada();
+  State<StatefulWidget> createState() => _DetalleCitaAgendada();
 }
 
-class _DetalleCitaSolicitada extends State<DetalleCitaSolicitada> {
+class _DetalleCitaAgendada extends State<DetalleCitaAgendada> {
   CitaService citaService = locator.get<CitaService>();
 
   @override

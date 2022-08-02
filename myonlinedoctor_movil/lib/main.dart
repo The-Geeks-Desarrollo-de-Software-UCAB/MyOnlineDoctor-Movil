@@ -4,10 +4,10 @@ import 'package:myonlinedoctor_movil/dominio/cita.dart';
 import 'package:myonlinedoctor_movil/dominio/doctor.dart';
 import 'package:myonlinedoctor_movil/dominio/paciente.dart';
 import 'package:myonlinedoctor_movil/locator.dart';
-import 'package:myonlinedoctor_movil/presentacion/pages/detallecitaSolicitada.dart';
+
 import 'package:myonlinedoctor_movil/presentacion/pages/detalles_doctor.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/doctores_page.dart';
-import 'package:myonlinedoctor_movil/presentacion/pages/homePage.dart';
+import 'package:myonlinedoctor_movil/presentacion/pages/homePageAgendada.dart';
 
 import 'dominio/especialidades.dart';
 import 'presentacion/pages/loginPage.dart';
