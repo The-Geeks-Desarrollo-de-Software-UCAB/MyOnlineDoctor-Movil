@@ -7,6 +7,7 @@ import 'package:myonlinedoctor_movil/locator.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/detallecitaSolicitada.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/detalles_doctor.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/doctores_page.dart';
+import 'package:myonlinedoctor_movil/presentacion/pages/historia_medica.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/homePage.dart';
 
 import 'dominio/especialidades.dart';
@@ -30,6 +31,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Material App',
       home: SplashPage(duration: 3, goToPage: HomePage()),
+      //home: SplashPage(duration: 3, goToPage: HistoriaMedica()),
+
       
     );
   }
