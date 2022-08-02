@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:myonlinedoctor_movil/data.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/helpers/appcolors.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/helpers/citaAgendada.dart';
 
@@ -103,9 +104,9 @@ class _HomePage extends State<HomePage> {
                 SizedBox(
                   height: 20,
                 ),
-                 Expanded(
-                     child: FutureBuilder(
-                        future: Cita.fetchCitas(''),
+                Expanded(
+                    child: FutureBuilder(
+                        future: Cita.fetchCitas(id_paciente),
                         builder: (BuildContext context, snapshot) {
                           if (snapshot.connectionState ==
                               ConnectionState.waiting) {

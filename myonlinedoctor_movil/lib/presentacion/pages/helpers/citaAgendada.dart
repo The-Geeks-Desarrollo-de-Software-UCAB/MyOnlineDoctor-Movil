@@ -20,16 +20,13 @@ class CitaAgendadaCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String prefijo = 'Dra.';
 
-    String prefijo ='Dra.';
-
-    if(cita.doctor.genero == 'M'){
+    /*if(cita.doctor.genero == 'M'){
       prefijo = 'Dr.';
-    }
+    }*/
 
     dynamic route;
-
-
 
     return InkWell(
         onTap: onTap,
@@ -67,14 +64,14 @@ class CitaAgendadaCard extends StatelessWidget {
                     TextSpan(
                         //text: "Cita: ${cita.id_cita}\n",
                         style: TextStyle(
-                          fontSize: 16,
-                          color: isActive ?? false
-                              ? AppColors.MAINCOLOR3
-                              : AppColors.MAINCOLOR3,
-                          fontWeight: FontWeight.bold,
-                        )),
+                      fontSize: 16,
+                      color: isActive ?? false
+                          ? AppColors.MAINCOLOR3
+                          : AppColors.MAINCOLOR3,
+                      fontWeight: FontWeight.bold,
+                    )),
                     TextSpan(
-                        text: prefijo + " ${cita.doctor.nombre}  ${cita.doctor.apellido} \n",
+                        text: prefijo + " ${cita}  \n",
                         style: TextStyle(
                             fontSize: 16,
                             color: isActive ?? false
@@ -82,7 +79,8 @@ class CitaAgendadaCard extends StatelessWidget {
                                 : AppColors.MAINCOLOR3,
                             fontWeight: FontWeight.bold)),
                     TextSpan(
-                        text: "Fecha: ${cita.fecha.toString().substring(0,10)}\n",
+                        text:
+                            "Fecha: ${cita.fecha.toString().substring(0, 10)}\n",
                         style: TextStyle(
                             fontSize: 16,
                             color: isActive ?? false
@@ -99,13 +97,18 @@ class CitaAgendadaCard extends StatelessWidget {
                       child: ElevatedButton(
                           style: ElevatedButton.styleFrom(primary: Colors.cyan),
                           onPressed: () {
-                                if(cita.estadoCita == 'AGENDADA'){
-                                  route = MaterialPageRoute(builder: (context) => DetalleCita(cita: cita));
-                                }else{
-                                route = MaterialPageRoute(builder: (context) => DetalleCitaSolicitada(cita: cita));
-                                }
-                                 Navigator.pushAndRemoveUntil(context, route, (route) => false);
-                              },
+                            if (cita.estadoCita == 'ACEPTADA') {
+                              route = MaterialPageRoute(
+                                  builder: (context) =>
+                                      DetalleCita(cita: cita));
+                            } else {
+                              route = MaterialPageRoute(
+                                  builder: (context) =>
+                                      DetalleCitaSolicitada(cita: cita));
+                            }
+                            Navigator.pushAndRemoveUntil(
+                                context, route, (route) => false);
+                          },
                           child: const CustomText(
                               text: "Ver detalles",
                               color: Colors.white,
