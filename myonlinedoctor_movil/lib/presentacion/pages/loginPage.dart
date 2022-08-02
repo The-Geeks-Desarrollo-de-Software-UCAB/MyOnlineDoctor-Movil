@@ -1,8 +1,13 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/doctores_page.dart';
+import 'package:myonlinedoctor_movil/presentacion/pages/helpers/botonReusable.dart';
+import 'package:myonlinedoctor_movil/presentacion/pages/helpers/reusableTextField.dart';
+import 'package:myonlinedoctor_movil/presentacion/pages/homePage.dart';
+import 'package:myonlinedoctor_movil/presentacion/pages/registerPage.dart';
 
 import 'helpers/appcolors.dart';
 
@@ -14,33 +19,88 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPage extends State<LoginPage> {
+  bool isAPIcallProcess = false;
+  TextEditingController _passwordTextController = TextEditingController();
+  TextEditingController _emailTextController = TextEditingController();
+
+  GlobalKey<FormState> globalFormKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
       child: Stack(
         children: [
-          Center(
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Center(
+                child: SingleChildScrollView(
               child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              logoDegradado(),
-              titulo(),
-              SizedBox(
-                height: 40,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  logoDegradado(),
+                  titulo(),
+                  SizedBox(
+                    height: 40,
+                  ),
+                  reusableTextField(
+                      'Email', Icons.email, false, _emailTextController),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  reusableTextField(
+                      'Contraseña', Icons.lock, true, _passwordTextController),
+                  SizedBox(
+                    height: 50,
+                  ),
+                  botonReusable(context, true, () {
+                    FirebaseAuth.instance
+                        .signInWithEmailAndPassword(
+                            email: _emailTextController.text,
+                            password: _passwordTextController.text)
+                        .then((value) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HomePage(),
+                          ));
+                    }).onError((error, stackTrace) {
+                      print("Error ${error.toString()}");
+                    });
+                  }),
+                  SizedBox(
+                    height: 18,
+                  ),
+                  signUpOption()
+                ],
               ),
-              campoRellenable(texto: "Email"),
-              campoContrasena(),
-              SizedBox(
-                height: 50,
-              ),
-              botonEntrar(context),
-            ],
-          ))
+            )),
+          )
         ],
       ),
     ));
+  }
+
+  Row signUpOption() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text("¿No tienes una cuenta?",
+            style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400)),
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => RegisterPage(),
+                ));
+          },
+          child: const Text(" ¡Registrate!",
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700)),
+        )
+      ],
+    );
   }
 }
 
@@ -58,66 +118,5 @@ Widget titulo() {
     textAlign: TextAlign.center,
     style: TextStyle(
         color: AppColors.MAINCOLOR3, fontSize: 30, fontWeight: FontWeight.bold),
-  );
-}
-
-Widget campoRellenable({texto: String}) {
-  return Container(
-    padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
-    child: TextField(
-      decoration: InputDecoration(
-          hintText: texto,
-          prefixIcon: Icon(
-            Icons.mail,
-            color: AppColors.GREY,
-          ),
-          enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(width: 1, color: AppColors.GREY),
-              borderRadius: BorderRadius.circular(20)),
-          focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(width: 1, color: AppColors.GREY),
-              borderRadius: BorderRadius.circular(20)),
-          errorBorder: OutlineInputBorder(
-              borderSide: BorderSide(width: 1, color: AppColors.RED),
-              borderRadius: BorderRadius.circular(20))),
-    ),
-  );
-}
-
-Widget campoContrasena() {
-  return Container(
-    padding: EdgeInsets.symmetric(vertical: 0, horizontal: 30),
-    child: TextField(
-      obscureText: true,
-      decoration: InputDecoration(
-          hintText: "Contraseña",
-          prefixIcon: Icon(
-            Icons.lock,
-            color: AppColors.GREY,
-          ),
-          enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(width: 1, color: AppColors.GREY),
-              borderRadius: BorderRadius.circular(20)),
-          focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(width: 1, color: AppColors.GREY),
-              borderRadius: BorderRadius.circular(20)),
-          errorBorder: OutlineInputBorder(
-              borderSide: BorderSide(width: 1, color: AppColors.RED),
-              borderRadius: BorderRadius.circular(20))),
-    ),
-  );
-}
-
-Widget botonEntrar(context) {
-  return ElevatedButton(
-    child: Text('Entrar'),
-    onPressed: () => {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => DoctoresPage()))
-    },
-    style: ElevatedButton.styleFrom(
-        primary: AppColors.MAINCOLOR3,
-        padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-        textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
   );
 }
