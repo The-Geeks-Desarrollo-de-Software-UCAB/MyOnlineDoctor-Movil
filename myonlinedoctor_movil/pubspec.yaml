@@ -44,6 +44,7 @@ dependencies:
   smooth_star_rating_null_safety: ^1.0.4+2
   get: ^4.6.5
   uuid: ^3.0.6
+  intl: ^0.17.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

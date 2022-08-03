@@ -1,7 +1,6 @@
 // ignore_for_file: file_names, prefer_const_constructors_in_immutables, prefer_final_fields, prefer_const_constructors
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:intl/intl.dart';
 import 'package:myonlinedoctor_movil/aplicacion/registerFormThree.dart';
 import '../presentacion/pages/helpers/appcolors.dart';
 
@@ -22,6 +21,7 @@ class _RegisterFormTwoState extends State<RegisterFormTwo> {
   var items = ['F', 'M'];
   DateTime? _birthDate;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  TextEditingController _fechaNacimiento = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -196,13 +196,33 @@ class _RegisterFormTwoState extends State<RegisterFormTwo> {
                               fontWeight: FontWeight.w500,
                               color: Color.fromARGB(255, 37, 37, 37)),
                         ),
-                        DropdownButton<String>(
+                        DropdownButtonFormField<String>(
+                          decoration: InputDecoration(
+                              hintText: 'Seleccione',
+                              hintStyle: TextStyle(color: Colors.grey),
+                              enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      width: 1, color: AppColors.GREY),
+                                  borderRadius: BorderRadius.circular(20)),
+                              focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      width: 1, color: AppColors.GREY),
+                                  borderRadius: BorderRadius.circular(20)),
+                              errorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      width: 1, color: AppColors.RED),
+                                  borderRadius: BorderRadius.circular(20))),
                           value: dropDownValue,
                           icon: const Icon(Icons.keyboard_arrow_down),
-                          underline: Container(
-                            height: 2,
-                            color: AppColors.GREY,
-                          ),
+                          validator: (value) {
+                            if (value != null && value.isEmpty) {
+                              return "Por favor seleccione su genero";
+                            } else if (value! == 'Seleccione') {
+                              return "Por favor seleccione su genero";
+                            } else {
+                              return null;
+                            }
+                          },
                           onChanged: (String? newValue) {
                             setState(() {
                               dropDownValue = newValue!;
@@ -217,10 +237,53 @@ class _RegisterFormTwoState extends State<RegisterFormTwo> {
                             );
                           }).toList(),
                         ),
-                        /*SizedBox(
-                  height: 15,
-                ),
-                FormField<DateTime>(
+                        SizedBox(
+                          height: 15,
+                        ),
+                        TextFormField(
+                          validator: (value) {
+                            if (value != null && value.isEmpty) {
+                              return "Por favor seleccione su fecha de nacimiento";
+                            } else {
+                              return null;
+                            }
+                          },
+                          controller: _fechaNacimiento,
+                          decoration: InputDecoration(
+                              prefixIcon: Icon(
+                                Icons.calendar_today,
+                                color: AppColors.GREY,
+                              ),
+                              hintText: 'Seleccione',
+                              hintStyle: TextStyle(color: Colors.grey),
+                              enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      width: 1, color: AppColors.GREY),
+                                  borderRadius: BorderRadius.circular(20)),
+                              focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      width: 1, color: AppColors.GREY),
+                                  borderRadius: BorderRadius.circular(20)),
+                              errorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      width: 1, color: AppColors.RED),
+                                  borderRadius: BorderRadius.circular(20))),
+                          onTap: () async {
+                            DateTime? fechaElegida = await showDatePicker(
+                                context: context,
+                                initialDate: DateTime(2006),
+                                firstDate: DateTime(1900),
+                                lastDate: DateTime(2006));
+
+                            if (fechaElegida != null) {
+                              setState(() {
+                                _fechaNacimiento.text = DateFormat('dd/MM/yyyy')
+                                    .format(fechaElegida);
+                              });
+                            }
+                          },
+                        ),
+                        /*FormField<DateTime>(
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   initialValue: _birthDate,
                   validator: (value) {
@@ -261,12 +324,3 @@ class _RegisterFormTwoState extends State<RegisterFormTwo> {
         ));
   }
 }
-/*
-List<DropdownMenuItem<String>> get dropDownItems {
-  List<DropdownMenuItem<String>> menuItems = [
-    DropdownMenuItem(child: Text("Femenino"), value: "F"),
-    DropdownMenuItem(child: Text("Masculino"), value: "M"),
-  ];
-  return menuItems;
-}
-*/

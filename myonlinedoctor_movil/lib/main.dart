@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
-      home: SplashPage(duration: 3, goToPage: LoginPage()),
+      home: SplashPage(duration: 3, goToPage: RegisterFormTwo()),
     );
   }
 }
