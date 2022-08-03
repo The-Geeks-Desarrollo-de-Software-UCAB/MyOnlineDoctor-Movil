@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myonlinedoctor_movil/aplicacion/trazabilidad/AnalyticsService.dart';
+import 'package:myonlinedoctor_movil/data.dart';
 import 'package:myonlinedoctor_movil/dominio/registro_medico.dart';
 import 'package:myonlinedoctor_movil/locator.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/lista_registros.dart';
@@ -78,11 +79,11 @@ class _HistoriaMedica extends State<HistoriaMedica> {
         ),
         body: 
          FutureBuilder(
-            future: Doctor.fetchDoctores(
-                '5'),
+            future: RegistroMedico.fetchRegistros(
+                id_paciente),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return ListaRegistros([RegistroMedico('motivo', DateTime.now(), 
+                return ListaRegistros([RegistroMedico( DateTime.now(), 
                                                       Doctor(
                                                               id: '2',
                                                               nombre: 'Carla',

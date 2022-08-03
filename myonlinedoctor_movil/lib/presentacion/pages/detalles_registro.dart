@@ -60,7 +60,13 @@ class DetalleRegistro extends StatelessWidget {
                  Row( 
                    mainAxisAlignment: MainAxisAlignment.start,
                    children: [
-                    Text(registro.historia, overflow: TextOverflow.ellipsis,),            
+                    Flexible(
+                      child: Column(
+                        children: [
+                          Text(registro.historia, overflow: TextOverflow.visible,),
+                        ],
+                      ),
+                    ),            
                    ],
                  ), 
                  SizedBox(height: 20),
@@ -96,7 +102,13 @@ class DetalleRegistro extends StatelessWidget {
                  Row( 
                    mainAxisAlignment: MainAxisAlignment.start,
                    children: [
-                   Text(registro.plan, overflow: TextOverflow.ellipsis,)           
+                   Flexible(
+                     child: Column(
+                       children: [
+                         Text(registro.plan, overflow: TextOverflow.visible,),
+                       ],
+                     ),
+                   )           
                    ],
                  ), 
 
@@ -136,7 +148,13 @@ class DetalleRegistro extends StatelessWidget {
                    mainAxisAlignment: MainAxisAlignment.start,
                    children: [
                    
-                    Text(registro.prescripcion, overflow: TextOverflow.ellipsis,)
+                    Flexible(
+                      child: Column(
+                        children: [
+                          Text(registro.prescripcion, overflow: TextOverflow.visible,),
+                        ],
+                      ),
+                    )
                    ],
                    
                  ),
