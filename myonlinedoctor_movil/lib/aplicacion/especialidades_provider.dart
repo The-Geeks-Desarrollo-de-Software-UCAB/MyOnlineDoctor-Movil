@@ -19,7 +19,7 @@ class EspecialidadesProvider extends ChangeNotifier{
   getOnDisplayEspecialidades() async{
     print('getOnDisplayEspecialidades');
 
-    const url = 'http://10.0.2.2:3000/especialidad/get/';
+    const url = 'https://myonlinedoctorapi.herokuapp.com/api/doctor/Especialidades';
     final response = await http.get(Uri.parse(url));
     final especialidades = Especialidades.parseEspecialidades(response.body);
     print(especialidades);

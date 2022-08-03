@@ -3,7 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:myonlinedoctor_movil/aplicacion/trazabilidad/AnalyticsService.dart';
 import 'package:myonlinedoctor_movil/locator.dart';
+import 'package:provider/provider.dart';
 
+import '../../aplicacion/especialidades_provider.dart';
 import '../../aplicacion/listadoctores.dart';
 import '../../aplicacion/search_delegate.dart';
 import '../../dominio/doctor.dart';
@@ -26,21 +28,21 @@ class _DoctoresPage extends State<DoctoresPage> {
   final AnalyticsService analyticsService = locator.get<AnalyticsService>();
   @override
   Widget build(BuildContext context) {
-    //final especialidadesProvider = Provider.of<EspecialidadesProvider>(context);
-    //final items = especialidadesProvider.especialidadesDisponibles;
-    final items = [
-      Especialidades(id: 0, nombre: '...'),
-      Especialidades(id: 1, nombre: 'Alergología'),
-      Especialidades(id: 2, nombre: 'Anestesiología'),
-      Especialidades(id: 3, nombre: 'Cardiología'),
-      Especialidades(id: 4, nombre: 'Dermatología'),
-      Especialidades(id: 5, nombre: 'Endocrinología'),
-      Especialidades(id: 6, nombre: 'Geriatría'),
-      Especialidades(id: 7, nombre: 'Hematología'),
-      Especialidades(id: 8, nombre: 'Medicina interna'),
-      Especialidades(id: 9, nombre: 'Nefrología'),
-      Especialidades(id: 10, nombre: 'Neumología')
-    ];
+    final especialidadesProvider = Provider.of<EspecialidadesProvider>(context);
+    final items = especialidadesProvider.especialidadesDisponibles;
+    // final items = [
+    //   Especialidades(id: 0, nombre: '...'),
+    //   Especialidades(id: 1, nombre: 'Alergología'),
+    //   Especialidades(id: 2, nombre: 'Anestesiología'),
+    //   Especialidades(id: 3, nombre: 'Cardiología'),
+    //   Especialidades(id: 4, nombre: 'Dermatología'),
+    //   Especialidades(id: 5, nombre: 'Endocrinología'),
+    //   Especialidades(id: 6, nombre: 'Geriatría'),
+    //   Especialidades(id: 7, nombre: 'Hematología'),
+    //   Especialidades(id: 8, nombre: 'Medicina interna'),
+    //   Especialidades(id: 9, nombre: 'Nefrología'),
+    //   Especialidades(id: 10, nombre: 'Neumología')
+    // ];
 
     return Scaffold(
         bottomNavigationBar: Container(

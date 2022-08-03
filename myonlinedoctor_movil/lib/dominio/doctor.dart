@@ -32,13 +32,13 @@ class Doctor {
 
   List<Object?> get props => [id, nombre, apellido, genero, imagen];
 
-  static Future<List<Doctor>> fetchDoctores(String especialidad) async {
+  static Future<List<Doctor>> fetchDoctores(String idespecialidad) async {
 
     String ruta;  
-    if(especialidad ==''){
+    if(idespecialidad ==''){
       ruta ='https://myonlinedoctorapi.herokuapp.com/api/doctor/Todos';
     }else{
-      ruta = 'https://myonlinedoctorapi.herokuapp.com/api/doctor/Todos'+especialidad;
+      ruta = 'https://myonlinedoctorapi.herokuapp.com/api/doctor/PorEspecialidad'+idespecialidad;
     }
     final response = await http.get(Uri.parse(ruta));
     if (response.statusCode == 200) {
@@ -70,8 +70,9 @@ class Doctor {
         apellido: json["_apellido"]["_primerApellido"],
         genero: 'M',
         imagen: 'https://i.ibb.co/fN9c7QF/mujer11.jpg',
-        especialidades: [ Especialidades(id: 1, nombre: 'Cardiologia'),  Especialidades(id: 2, nombre: 'Traumatologia')],
-          //  Especialidades.parseEspecialidadesLista(json["especialidades"]),
+        especialidades: 
+            Especialidades.parseEspecialidadesLista(json["_especialidad"]),
+           // [ Especialidades(id: 1, nombre: 'Cardiologia'),  Especialidades(id: 2, nombre: 'Traumatologia')],
         calificaciones: json["_promedioCalificacion"]["_promedioCalificacion"]
     );
   }

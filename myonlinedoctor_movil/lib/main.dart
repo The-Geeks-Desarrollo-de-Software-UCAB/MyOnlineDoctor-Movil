@@ -8,7 +8,9 @@ import 'package:myonlinedoctor_movil/locator.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/detalles_doctor.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/doctores_page.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/homePageAgendada.dart';
+import 'package:provider/provider.dart';
 
+import 'aplicacion/especialidades_provider.dart';
 import 'dominio/especialidades.dart';
 import 'presentacion/pages/loginPage.dart';
 import 'presentacion/pages/ratingPage.dart';
@@ -26,11 +28,16 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Material App',
-      home: SplashPage(duration: 3, goToPage: HomePage()),
-      
+    return MultiProvider(
+      providers: [
+         ChangeNotifierProvider(create: (_)=> EspecialidadesProvider(), lazy: false),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Material App',
+        home: SplashPage(duration: 3, goToPage: HomePage()),
+        
+      ),
     );
   }
 }
