@@ -36,16 +36,16 @@ class Doctor {
 
     String ruta;  
     if(especialidad ==''){
-      ruta ='http://192.168.24.241:3000/api/doctorSpecialty/all';
+      ruta ='https://myonlinedoctorapi.herokuapp.com/api/doctor/Todos';
     }else{
-      ruta = 'http://192.168.24.241:3000/api/doctorSpecialty/by'+especialidad;
+      ruta = 'https://myonlinedoctorapi.herokuapp.com/api/doctor/Todos'+especialidad;
     }
     final response = await http.get(Uri.parse(ruta));
     if (response.statusCode == 200) {
       List<Doctor> list = parseDoctores(response.body);
       return list;
     } else {
-      throw Exception('Error al Cargar Especialidades');
+      throw Exception('Error al Cargar Doctores');
     }
     //final doctorResponse =Doctor.fromMap(response.body);
   }
@@ -65,14 +65,15 @@ class Doctor {
 
   factory Doctor.fromJson(Map<dynamic, dynamic> json) {
     return Doctor(
-        id: json["id_doctor"],
-        nombre: json["primerNombre"],
-        apellido: json["primerApellido"],
-        genero: json["genero"],
-        imagen: json["imagen"],
-        especialidades: json["especialidades"] == null ? [Especialidades(id: 1, nombre: 'Cardiologia')] : Especialidades.parseEspecialidadesLista(json["especialidades"]) ,
+        id: json["_id"]["_id"],
+        nombre: json["_nombre"]["_primerNombre"],
+        apellido: json["_apellido"]["_primerApellido"],
+        genero: 'M',
+        imagen: 'https://i.ibb.co/fN9c7QF/mujer11.jpg',
+        especialidades: [ Especialidades(id: 1, nombre: 'Cardiologia'),  Especialidades(id: 2, nombre: 'Traumatologia')],
           //  Especialidades.parseEspecialidadesLista(json["especialidades"]),
-        calificaciones: json["promedioCalificacion"]);
+        calificaciones: json["_promedioCalificacion"]["_promedioCalificacion"]
+    );
   }
 
   String getEspecialidadesToString() {
