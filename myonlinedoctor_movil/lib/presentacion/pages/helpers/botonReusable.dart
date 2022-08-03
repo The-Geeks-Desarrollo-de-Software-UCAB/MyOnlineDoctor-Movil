@@ -12,6 +12,6 @@ Widget botonReusable(BuildContext context, bool isLogin, Function onTap) {
     style: ElevatedButton.styleFrom(
         primary: AppColors.MAINCOLOR3,
         padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-        textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+        textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
   );
 }

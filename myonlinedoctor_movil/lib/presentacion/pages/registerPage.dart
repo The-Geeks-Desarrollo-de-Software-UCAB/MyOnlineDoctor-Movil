@@ -41,17 +41,19 @@ class _RegisterPageState extends State<RegisterPage> {
                 ])),
           ),
         ),
-        body: Column(
-          children: [
-            SizedBox(
-              height: 20,
-            ),
-            //  ChangeNotifierProvider(
-            //  create: (_) => RegisterProvider(),
-            // child: RegisterForm(paciente: paciente),
-            //),
-            SingleChildScrollView(child: RegisterFormOne())
-          ],
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 20,
+              ),
+              //  ChangeNotifierProvider(
+              //  create: (_) => RegisterProvider(),
+              // child: RegisterForm(paciente: paciente),
+              //),
+              RegisterFormOne()
+            ],
+          ),
         ));
   }
 }

@@ -217,9 +217,15 @@ class _RegisterFormOneState extends State<RegisterFormOne> {
                 //reusableTextField(
                 //  'Contraseña', Icons.lock, true, _passwordTextController),
                 SizedBox(
-                  height: 15,
+                  height: 50,
                 ),
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      primary: AppColors.MAINCOLOR3,
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                      textStyle:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                   child: Text('Siguiente'),
                   onPressed: () => {
                     if (_formKey.currentState!.validate())
@@ -229,6 +235,7 @@ class _RegisterFormOneState extends State<RegisterFormOne> {
                                 email: _emailTextController.text,
                                 password: _passwordTextController.text)
                             .then((value) {
+                          print('exito');
                           Navigator.push(
                               context,
                               MaterialPageRoute(

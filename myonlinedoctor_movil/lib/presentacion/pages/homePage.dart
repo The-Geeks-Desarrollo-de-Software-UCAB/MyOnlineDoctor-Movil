@@ -1,8 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/helpers/appcolors.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/helpers/citaAgendada.dart';
+import 'package:myonlinedoctor_movil/presentacion/pages/loginPage.dart';
 
 import '../../dominio/cita.dart';
 import '../../infraestructura/controllers/getAppointments.dart';
@@ -96,15 +98,32 @@ class _HomePage extends State<HomePage> {
                                   fontSize: 16,
                                   fontWeight: FontWeight.w400),
                             ),
-                          ])
+                          ]),
+                      SizedBox(
+                        width: 50,
+                      ),
+                      Container(
+                        child: IconButton(
+                            icon: Icon(Icons.logout),
+                            color: Colors.white,
+                            hoverColor: AppColors.BLACK,
+                            onPressed: () {
+                              FirebaseAuth.instance.signOut().then((value) {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => LoginPage()));
+                              });
+                            }),
+                      )
                     ],
                   ),
                 ),
                 SizedBox(
                   height: 20,
                 ),
-                 Expanded(
-                     child: FutureBuilder(
+                Expanded(
+                    child: FutureBuilder(
                         future: Cita.fetchCitas(''),
                         builder: (BuildContext context, snapshot) {
                           if (snapshot.connectionState ==
