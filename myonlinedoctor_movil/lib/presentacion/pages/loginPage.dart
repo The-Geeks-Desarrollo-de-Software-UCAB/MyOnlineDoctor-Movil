@@ -6,9 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/doctores_page.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/helpers/botonReusable.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/helpers/reusableTextField.dart';
-import 'package:myonlinedoctor_movil/presentacion/pages/homePage.dart';
+import 'package:myonlinedoctor_movil/presentacion/pages/homePageAceptada.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/registerPage.dart';
+import 'package:provider/provider.dart';
 
+import '../../aplicacion/paciente_provider.dart';
 import 'helpers/appcolors.dart';
 
 class LoginPage extends StatefulWidget {
@@ -27,6 +29,8 @@ class _LoginPage extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    final pacienteProvider = Provider.of<PacienteProvider>(context);
+    pacienteProvider.setPaciente('pedrito@gmail.com');
     return Scaffold(
         body: Container(
       child: Stack(
@@ -63,7 +67,7 @@ class _LoginPage extends State<LoginPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => HomePage(),
+                            builder: (context) => HomePageAceptada(),
                           ));
                     }).onError((error, stackTrace) {
                       showDialog(
@@ -83,7 +87,7 @@ class _LoginPage extends State<LoginPage> {
                         ),
                       );
                     });
-                  }),
+                  }, _emailTextController.text),
                   SizedBox(
                     height: 18,
                   ),

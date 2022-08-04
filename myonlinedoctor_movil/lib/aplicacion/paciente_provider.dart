@@ -11,7 +11,7 @@ import '../dominio/especialidades.dart';
 
 class PacienteProvider extends ChangeNotifier {
 
- Paciente paciente = Paciente(id_paciente: 'id_paciente',
+ Paciente paciente = Paciente(id_paciente: 'e49421aa-6508-4902-aec2-75d519299bb7',
                                usuario: 'usuario', 
                                contrasena: 'contrasena',
                                 primerNombre: 'primerNombre', 

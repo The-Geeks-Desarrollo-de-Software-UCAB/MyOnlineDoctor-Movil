@@ -47,11 +47,7 @@ class Paciente {
   
   
   factory Paciente.fromMap(String str) => Paciente.fromJson(json.decode(str));
-
-
-
     
-
     factory Paciente.fromJson(Map<String, dynamic> json) => Paciente(
         id_paciente: json["_idPaciente"]["_id"],
         usuario: json["_correo"]["_correo"],
