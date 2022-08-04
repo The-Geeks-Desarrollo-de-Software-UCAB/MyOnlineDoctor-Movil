@@ -61,7 +61,9 @@ class _HomePageAceptada extends State<HomePageAceptada> {
                 ),
               ),
             ),
-            SizedBox(width: 20,),
+            SizedBox(
+              width: 20,
+            ),
             InkWell(
               onTap: () => {
                 Navigator.push(context,
@@ -86,8 +88,9 @@ class _HomePageAceptada extends State<HomePageAceptada> {
                 ),
               ),
             ),
-
-            SizedBox(width: 20,),
+            SizedBox(
+              width: 20,
+            ),
             InkWell(
               onTap: () => {
                 Navigator.push(context,
@@ -112,8 +115,6 @@ class _HomePageAceptada extends State<HomePageAceptada> {
                 ),
               ),
             ),
-
-
           ],
         ),
       ),
@@ -148,7 +149,7 @@ class _HomePageAceptada extends State<HomePageAceptada> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                                    nombre_paciente + ' ' + apellido_paciente,
+                              nombre_paciente + ' ' + apellido_paciente,
                               style: TextStyle(
                                   color: AppColors.WHITE,
                                   fontSize: 22,
@@ -172,7 +173,7 @@ class _HomePageAceptada extends State<HomePageAceptada> {
                     child: FutureBuilder(
                         future: Cita.fetchCitas(id_paciente),
                         builder: (BuildContext context, snapshot) {
-                          if(!snapshot.hasData){
+                          if (!snapshot.hasData) {
                             return const Center(
                                 child: Text('No hay citas Aceptadas'));
                           }

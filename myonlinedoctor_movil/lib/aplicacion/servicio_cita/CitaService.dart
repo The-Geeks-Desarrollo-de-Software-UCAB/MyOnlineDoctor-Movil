@@ -43,7 +43,8 @@ class CitaService {
 
   aceptarCita(String id, String id_paciente) async {
     return await http.put(
-        Uri.parse("https://myonlinedoctorapi.herokuapp.com/api/cita/Aceptar"),
+        Uri.parse(
+            "https://myonlinedoctorapi.herokuapp.com/api/cita/AceptarFecha"),
         body: {"id_paciente": id_paciente, "id_cita": id});
   }
 

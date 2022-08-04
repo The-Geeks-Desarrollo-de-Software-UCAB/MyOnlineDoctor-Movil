@@ -1,9 +1,11 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:developer';
 
 import 'package:agora_rtc_engine/rtc_engine.dart';
 import 'package:myonlinedoctor_movil/aplicacion/paciente_provider.dart';
+import 'package:myonlinedoctor_movil/aplicacion/servicioPacienteLogin/servicio_notificacion/NotificacionService.dart';
 import 'package:myonlinedoctor_movil/data.dart';
 import 'package:myonlinedoctor_movil/dominio/doctor.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/resultado_cita_Acept_Rech.dart';
@@ -29,6 +31,23 @@ class DetalleCitaAgendada extends StatefulWidget {
 
 class _DetalleCitaAgendada extends State<DetalleCitaAgendada> {
   CitaService citaService = locator.get<CitaService>();
+  NotificacionService notificacionService = locator.get<NotificacionService>();
+
+  final FirebaseMessaging fcm = FirebaseMessaging.instance;
+  String? message;
+  registrarOnFirebase() {
+    fcm.subscribeToTopic('all');
+    fcm.getToken().then((token) {
+      print(token);
+      notificacionService.guardarDispositivo(id_paciente, token!);
+    });
+  }
+
+  @override
+  void initState() {
+    registrarOnFirebase();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +57,7 @@ class _DetalleCitaAgendada extends State<DetalleCitaAgendada> {
     final doctor = doctoresProvider.doctor;
     final pacienteProvider = Provider.of<PacienteProvider>(context);
 
-    
     return MaterialApp(
-      
       debugShowCheckedModeBanner: false,
       title: 'Material App',
       home: Scaffold(
@@ -77,7 +94,7 @@ class _DetalleCitaAgendada extends State<DetalleCitaAgendada> {
                     ElevatedButton(
                       onPressed: () {
                         citaService.rechazarCita(
-                            widget.cita.idCita,  pacienteProvider.paciente.id_paciente);
+                            widget.cita.idCita, id_paciente);
 
                         final route = MaterialPageRoute(
                             builder: (context) => ResultadoAceptarRechazarCita(
@@ -96,7 +113,7 @@ class _DetalleCitaAgendada extends State<DetalleCitaAgendada> {
                     ElevatedButton(
                       onPressed: () {
                         citaService.aceptarCita(
-                            widget.cita.idCita, pacienteProvider.paciente.id_paciente);
+                            widget.cita.idCita, id_paciente);
                         final route = MaterialPageRoute(
                             builder: (context) => ResultadoAceptarRechazarCita(
                                   resultado: 'CITA ACEPTADA',
