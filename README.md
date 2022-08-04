@@ -1,7 +1,15 @@
 # MyOnlineDoctor-Movil
 
-Proyecto semestral: myOnlineDoctor Desarrollo de Software Escuela de Ingeniería Informática - UCAB
-Aplicacion Movil | Pacientes
+![Logo](https://i.ibb.co/HBwvY6M/logo-repos.png)
+
+### Aplicacion Movil | Destinada a Pacientes
+Proyecto semestral: myOnlineDoctor, para la asignatura "Desarrollo de Software", Escuela de Ingeniería Informática - UCAB.
+### Integrantes:
+Diego Bastardo, Carlos Hernandez, Miguel Cuadrado, Vicente Mirabal, Tomás Sánchez, Natalia Velásquez, Anamaría Chacón.
+
+
+## Tabla de contribuciones
+
 ### Vicente Mirabal 
 | Descripción  |Links|
 | ------------- |:-------------:|
@@ -26,13 +34,32 @@ Aplicacion Movil | Pacientes
 | Se agregaron algunos controladores. |[**Modificaciones y detalles.**](https://github.com/The-Geeks-Desarrollo-de-Software-UCAB/MyOnlineDoctor-Movil/commit/9ea935009a2e3e2390de0c712d2fab9110ae229e)|
 | Creación inicial de la vista de Homepage del Paciente. |[**Implementación Homepage Paciente**](https://github.com/The-Geeks-Desarrollo-de-Software-UCAB/MyOnlineDoctor-Movil/commit/ce98be1d2ac52afaa0a23777d93394621999e1a3)|
 | Arreglados algunos errores del homepage y facilitada la navegacion entre vistas con una barra inferior. |[**Homepage del paciente y detalle citas**](https://github.com/The-Geeks-Desarrollo-de-Software-UCAB/MyOnlineDoctor-Movil/commit/bb96949b06a839cc2c194db4afbcc3cab13ad969)|
+| Creación de vistas de login y registro de paciente. |[**Primera iteracion de login y registro**](https://github.com/The-Geeks-Desarrollo-de-Software-UCAB/MyOnlineDoctor-Movil/commit/275a1afb972b676a69906484cbb3f27f8ab43c77)|
+| Creación y modificación de vistas del formulario de registro de paciente, validaciones por UI incluidas. |[**Implementacion de vistas de registro**](https://github.com/The-Geeks-Desarrollo-de-Software-UCAB/MyOnlineDoctor-Movil/commit/53837b130aa7d89061e112b0824200b5dea2604d)|
+| Modificaciones del formulario de registro de paciente. Conexión correcta con Firebase. |[**Modificaciones de registro y login**](https://github.com/The-Geeks-Desarrollo-de-Software-UCAB/MyOnlineDoctor-Movil/commit/1ce16307cde106386458f648bfb9540e172b2c56)|
 
-Integrantes:
-Diego Bastardo
-Carlos Hernandez
-Miguel Cuadrado
-Vicente Mirabal
-Tomás Sánchez
-Natalia Velásquez
-Anamaría Chacón
+## Librerías (dependencias) utilizadas
+
+- [http 0.13.4](https://pub.dev/packages/http)
+- [provider 6.0.3](https://pub.dev/packages/provider)
+- [firebase_core 1.19.2](https://pub.dev/packages/firebase_core)
+- [firebase_analytics 9.2.0](https://pub.dev/packages/firebase_analytics)
+- [firebase_auth 3.4.2](https://pub.dev/packages/firebase_auth)
+- [agora_rtc_engine 5.3.0](https://pub.dev/packages/agora_rtc_engine)
+- [permission_handler 10.0.0](https://pub.dev/packages/permission_handler)
+- [get_it 7.2.0](https://pub.dev/packages/get_it)
+- [smooth_star_rating_null_safety 1.0.4+2](https://pub.dev/packages/smooth_star_rating_null_safety)
+- [get 4.6.5](https://pub.dev/packages/get)
+- [uuid 3.0.6](https://pub.dev/packages/uuid)
+- [intl 0.17.0](https://pub.dev/packages/intl)
+
+## Documentación utilizada
+
+- [Flutter documentation](https://docs.flutter.dev/)
+- [Dart documentation: Asynchronous programming: futures, async, await](https://dart.dev/codelabs/async-await)
+- [Dart documentation: Understanding null safety](https://dart.dev/null-safety/understanding-null-safety)
+- [Firebase documentation: Agregar Firebase al proyecto de Android](https://firebase.google.com/docs/android/setup)
+- [Firebase documentation: Comienza a usar Google Analytics](https://firebase.google.com/docs/analytics/get-started?platform=web)
+- [Agora documentation](https://docs.agora.io/en)
+
 
