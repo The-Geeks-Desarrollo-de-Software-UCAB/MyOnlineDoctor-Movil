@@ -240,6 +240,14 @@ class _RegisterFormTwoState extends State<RegisterFormTwo> {
                         SizedBox(
                           height: 15,
                         ),
+                        Text(
+                          'Fecha de nacimiento:',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                              color: Color.fromARGB(255, 37, 37, 37)),
+                        ),
                         TextFormField(
                           validator: (value) {
                             if (value != null && value.isEmpty) {

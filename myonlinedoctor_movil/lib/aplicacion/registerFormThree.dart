@@ -12,6 +12,8 @@ class RegisterFormThree extends StatefulWidget {
 }
 
 class _RegisterFormThreeState extends State<RegisterFormThree> {
+  TextEditingController _altura = TextEditingController();
+  TextEditingController _peso = TextEditingController();
   TextEditingController _antecedentes = TextEditingController();
   TextEditingController _operaciones = TextEditingController();
   TextEditingController _alergias = TextEditingController();
@@ -42,6 +44,75 @@ class _RegisterFormThreeState extends State<RegisterFormThree> {
                 children: [
                   SizedBox(
                     height: 20,
+                  ),
+                  Text(
+                    'Altura:',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        color: Color.fromARGB(255, 37, 37, 37)),
+                  ),
+                  TextFormField(
+                    maxLines: null,
+                    controller: _altura,
+                    keyboardType: TextInputType.text,
+                    decoration: InputDecoration(
+                        hintText: "Altura",
+                        hintStyle: TextStyle(color: Colors.grey),
+                        enabledBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 1, color: AppColors.GREY),
+                            borderRadius: BorderRadius.circular(20)),
+                        focusedBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 1, color: AppColors.GREY),
+                            borderRadius: BorderRadius.circular(20)),
+                        errorBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 1, color: AppColors.RED),
+                            borderRadius: BorderRadius.circular(20))),
+                    validator: (value) {
+                      if (value != null && value.isEmpty) {
+                        return "Por favor ingrese su altura.";
+                      }
+                    },
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Text(
+                    'Peso:',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        color: Color.fromARGB(255, 37, 37, 37)),
+                  ),
+                  TextFormField(
+                    maxLines: null,
+                    controller: _peso,
+                    keyboardType: TextInputType.text,
+                    decoration: InputDecoration(
+                        hintText: "Peso",
+                        hintStyle: TextStyle(color: Colors.grey),
+                        enabledBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 1, color: AppColors.GREY),
+                            borderRadius: BorderRadius.circular(20)),
+                        focusedBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 1, color: AppColors.GREY),
+                            borderRadius: BorderRadius.circular(20)),
+                        errorBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 1, color: AppColors.RED),
+                            borderRadius: BorderRadius.circular(20))),
+                    validator: (value) {
+                      if (value != null && value.isEmpty) {
+                        return "Por favor ingrese su peso.";
+                      }
+                    },
                   ),
                   Text(
                     'Antecedentes:',

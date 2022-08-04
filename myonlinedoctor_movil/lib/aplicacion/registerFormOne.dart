@@ -22,18 +22,7 @@ class _RegisterFormOneState extends State<RegisterFormOne> {
   TextEditingController _confirmPasswordTextController =
       TextEditingController();
   TextEditingController _emailTextController = TextEditingController();
-  //String _email = '';
-  /* String _confirmPassword = '';
-  TextEditingController _primerNombre = TextEditingController();
-  TextEditingController _segundoNombre = TextEditingController();
-  TextEditingController _primerApellido = TextEditingController();
-  TextEditingController _segundoApellido = TextEditingController();
-  String _genero = '';
-  TextEditingController _altura = TextEditingController();
-  TextEditingController _peso = TextEditingController();
-  TextEditingController _antecedentes = TextEditingController();
-  TextEditingController _operaciones = TextEditingController();
-  TextEditingController _alergias = TextEditingController();*/
+  TextEditingController _phoneTextController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   //RegisterService registerService = locator.get<RegisterService>();
@@ -214,6 +203,51 @@ class _RegisterFormOneState extends State<RegisterFormOne> {
                       }
                       return null;
                     }),
+                SizedBox(
+                  height: 15,
+                ),
+                Text(
+                  'Número de teléfono:',
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                      color: Color.fromARGB(255, 37, 37, 37)),
+                ),
+                TextFormField(
+                  keyboardType: TextInputType.text,
+                  controller: _phoneTextController,
+                  validator: (value) {
+                    if (value != null && value.isEmpty) {
+                      return "Por favor introduzca su número de teléfono";
+                    } else if (value!.length != 11) {
+                      return "Un número de teléfono válido debe tener al menos 11 caracteres.";
+                    } else {
+                      return null;
+                    }
+                  },
+                  enableSuggestions: false,
+                  autocorrect: false,
+                  decoration: InputDecoration(
+                      prefixIcon: Icon(
+                        Icons.phone,
+                        color: AppColors.GREY,
+                      ),
+                      hintText: "Contraseña",
+                      hintStyle: TextStyle(color: Colors.grey),
+                      enabledBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(width: 1, color: AppColors.GREY),
+                          borderRadius: BorderRadius.circular(20)),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(width: 1, color: AppColors.GREY),
+                          borderRadius: BorderRadius.circular(20)),
+                      errorBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(width: 1, color: AppColors.RED),
+                          borderRadius: BorderRadius.circular(20))),
+                ),
                 //reusableTextField(
                 //  'Contraseña', Icons.lock, true, _passwordTextController),
                 SizedBox(

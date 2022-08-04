@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/helpers/appcolors.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/helpers/citaAgendada.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/loginPage.dart';
-
 import '../../dominio/cita.dart';
 import '../../infraestructura/controllers/getAppointments.dart';
 import '../../infraestructura/moveAppointments.dart';
@@ -75,7 +74,7 @@ class _HomePage extends State<HomePage> {
                       CircleAvatar(
                         radius: 40,
                         backgroundImage: NetworkImage(
-                            'https://i.ibb.co/tQ5Q3SN/mujer17.jpg'),
+                            'https://licania.org/img/perfiles/Otro.png'),
                       ),
                       SizedBox(
                         width: 16,
@@ -100,9 +99,9 @@ class _HomePage extends State<HomePage> {
                             ),
                           ]),
                       SizedBox(
-                        width: 50,
+                        width: 40,
                       ),
-                      Container(
+                      Expanded(
                         child: IconButton(
                             icon: Icon(Icons.logout),
                             color: Colors.white,
