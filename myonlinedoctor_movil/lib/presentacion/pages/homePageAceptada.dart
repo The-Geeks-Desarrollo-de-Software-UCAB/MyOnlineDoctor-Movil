@@ -27,10 +27,8 @@ class _HomePageAceptada extends State<HomePageAceptada> {
 
   @override
   Widget build(BuildContext context) {
-    final pacienteProvider = Provider.of<PacienteProvider>(context);
-   
-
-    final paciente  = pacienteProvider.paciente;
+    // final pacienteProvider = Provider.of<PacienteProvider>(context);
+    // final paciente  = pacienteProvider.paciente;
     var size = MediaQuery.of(context).size;
     return Scaffold(
       bottomNavigationBar: Container(
@@ -150,7 +148,7 @@ class _HomePageAceptada extends State<HomePageAceptada> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              paciente.primerNombre + ' ' + paciente.primerApellido,
+                                    nombre_paciente + ' ' + apellido_paciente,
                               style: TextStyle(
                                   color: AppColors.WHITE,
                                   fontSize: 22,
@@ -172,7 +170,7 @@ class _HomePageAceptada extends State<HomePageAceptada> {
                 ),
                 Expanded(
                     child: FutureBuilder(
-                        future: Cita.fetchCitas(paciente.id_paciente),
+                        future: Cita.fetchCitas(id_paciente),
                         builder: (BuildContext context, snapshot) {
                           if(!snapshot.hasData){
                             return const Center(

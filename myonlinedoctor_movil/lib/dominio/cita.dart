@@ -47,6 +47,8 @@ class Cita {
         'https://myonlinedoctorapi.herokuapp.com/api/cita/AceptadasPaciente' +
             id_pac));
 
+    print(id_pac);        
+
     if (response.statusCode == 200) {
       List<Cita> list = parseCitas(response.body);
       return list;

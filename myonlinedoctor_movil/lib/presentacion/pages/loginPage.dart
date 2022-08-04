@@ -3,6 +3,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:myonlinedoctor_movil/data.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/doctores_page.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/helpers/botonReusable.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/helpers/reusableTextField.dart';
@@ -29,6 +30,7 @@ class _LoginPage extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+
     final pacienteProvider = Provider.of<PacienteProvider>(context);
     pacienteProvider.setPaciente('pedrito@gmail.com');
     return Scaffold(
@@ -59,6 +61,12 @@ class _LoginPage extends State<LoginPage> {
                     height: 50,
                   ),
                   botonReusable(context, true, () {
+
+
+                      pacienteProvider.setPaciente(_emailTextController.text);
+                      id_paciente = pacienteProvider.paciente.id_paciente;
+                      nombre_paciente = pacienteProvider.paciente.primerNombre;
+                      apellido_paciente = pacienteProvider.paciente.primerApellido;
                     FirebaseAuth.instance
                         .signInWithEmailAndPassword(
                             email: _emailTextController.text,

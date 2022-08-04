@@ -157,9 +157,9 @@ class _HomePage extends State<HomePage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              paciente.primerNombre +
+                              nombre_paciente +
                                   ' ' +
-                                  paciente.primerApellido,
+                                  apellido_paciente,
                               style: TextStyle(
                                   color: AppColors.WHITE,
                                   fontSize: 22,
