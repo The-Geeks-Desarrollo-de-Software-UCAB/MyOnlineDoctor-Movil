@@ -16,7 +16,9 @@ import 'helpers/customtext.dart';
 import 'historia_medica.dart';
 
 class HomePageAceptada extends StatefulWidget {
-  const HomePageAceptada({Key? key}) : super(key: key);
+
+  String email;
+  HomePageAceptada({ required this.email, Key? key}) : super(key: key);
 
   @override
   State<HomePageAceptada> createState() => _HomePageAceptada();
@@ -28,6 +30,7 @@ class _HomePageAceptada extends State<HomePageAceptada> {
   @override
   Widget build(BuildContext context) {
     final pacienteProvider = Provider.of<PacienteProvider>(context);
+    pacienteProvider.setPaciente(widget.email);
    
 
     final paciente  = pacienteProvider.paciente;
@@ -93,7 +96,7 @@ class _HomePageAceptada extends State<HomePageAceptada> {
             InkWell(
               onTap: () => {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => HomePage()))
+                    MaterialPageRoute(builder: (context) => HomePage(email: widget.email,)))
               },
               child: Padding(
                 padding: EdgeInsets.only(top: 9.0),

@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:myonlinedoctor_movil/aplicacion/paciente_provider.dart';
 import 'package:myonlinedoctor_movil/aplicacion/trazabilidad/AnalyticsService.dart';
 import 'package:myonlinedoctor_movil/locator.dart';
 import 'package:provider/provider.dart';
@@ -30,6 +31,8 @@ class _DoctoresPage extends State<DoctoresPage> {
   Widget build(BuildContext context) {
     final especialidadesProvider = Provider.of<EspecialidadesProvider>(context);
     final items = especialidadesProvider.especialidadesDisponibles;
+    final pacienteProvider = Provider.of<PacienteProvider>(context);
+
     // final items = [
     //   Especialidades(id: 0, nombre: '...'),
     //   Especialidades(id: 1, nombre: 'Alergología'),
@@ -51,7 +54,7 @@ class _DoctoresPage extends State<DoctoresPage> {
           child: InkWell(
             onTap: () => {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => HomePage()))
+                  context, MaterialPageRoute(builder: (context) => HomePage(email: pacienteProvider.paciente.usuario,)))
             },
             child: Padding(
               padding: EdgeInsets.only(top: 9.0),
@@ -156,6 +159,7 @@ class _DoctoresPage extends State<DoctoresPage> {
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 //return ListaDoctores([Doctor(id: 1, nombre: 'David', apellido: 'Rey', genero: 'M', imagen:'https://images.unsplash.com/photo-1658140917228-129162d2a5b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80' , especialidades: [Especialidades(id: 1, nombre: 'Cardiologia'), Especialidades(id: 2, nombre: 'Traumatologia')])]);
+                
                 return Center(child: CircularProgressIndicator());
               } else {
                 return ListaDoctores(snapshot.data);

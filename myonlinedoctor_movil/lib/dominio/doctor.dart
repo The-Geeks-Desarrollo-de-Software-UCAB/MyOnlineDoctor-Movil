@@ -40,6 +40,7 @@ class Doctor {
     }else{
       ruta = 'https://myonlinedoctorapi.herokuapp.com/api/doctor/PorEspecialidad'+idespecialidad;
     }
+    print(ruta);
     final response = await http.get(Uri.parse(ruta));
     if (response.statusCode == 200) {
       List<Doctor> list = parseDoctores(response.body);
