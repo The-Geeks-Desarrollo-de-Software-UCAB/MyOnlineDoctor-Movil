@@ -20,7 +20,9 @@ import 'helpers/citaAgendada.dart';
 import 'helpers/customtext.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+
+  String email;
+   HomePage({Key? key, required this.email}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePage();
@@ -32,9 +34,7 @@ class _HomePage extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final pacienteProvider = Provider.of<PacienteProvider>(context);
-
-    
-    
+    pacienteProvider.setPaciente(widget.email);
 
     final paciente = pacienteProvider.paciente;
     var size = MediaQuery.of(context).size;
@@ -102,7 +102,7 @@ class _HomePage extends State<HomePage> {
             InkWell(
               onTap: () => {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => HomePageAceptada()))
+                    MaterialPageRoute(builder: (context) => HomePageAceptada(email: widget.email)))
               },
               child: Padding(
                 padding: EdgeInsets.only(top: 9.0),

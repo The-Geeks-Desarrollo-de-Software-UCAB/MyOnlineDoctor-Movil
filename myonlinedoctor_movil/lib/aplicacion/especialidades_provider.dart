@@ -44,8 +44,8 @@ class EspecialidadesProvider extends ChangeNotifier{
     print(json.decode(responseDoc.body)[0]['doctor']['_nombre']['_primerNombre']);
 
     print(resultado[0]['imagen']);
-    final paciente2 =  await Paciente.fetchPaciente('pedrito@gmail.com');
-    print(paciente2.id_paciente + '----------------------------------------->');
+    //final paciente2 =  await Paciente.fetchPaciente('pedrito@gmail.com');
+   // print(paciente2.id_paciente + '----------------------------------------->');
 
     print(Doctor(
       apellido:resultado[0]['doctor']['_apellido']['_primerApellido'], 
@@ -68,8 +68,8 @@ class EspecialidadesProvider extends ChangeNotifier{
        
       //final paciente2 =  await Paciente.fetchPaciente('pedrito@gmail.com');
 
-       print(paciente2.primerNombre);
-        print(paciente2.segundoNombre);
+       //print(paciente2.primerNombre);
+        //print(paciente2.segundoNombre);
 
       // print(respuestaDecodificada['_correo']['_correo']);
       // print(Paciente.fromJson(respuestaDecodificada));
@@ -77,7 +77,7 @@ class EspecialidadesProvider extends ChangeNotifier{
      
 
 
-     print(paciente2);
+     //print(paciente2);
 
 
     
