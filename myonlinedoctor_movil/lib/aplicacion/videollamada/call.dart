@@ -16,6 +16,7 @@ import 'package:myonlinedoctor_movil/presentacion/pages/ratingPage.dart';
 class CallPage extends StatefulWidget {
   final String? channelName;
   final ClientRole? role;
+
   const CallPage({
     Key? key,
     this.channelName,

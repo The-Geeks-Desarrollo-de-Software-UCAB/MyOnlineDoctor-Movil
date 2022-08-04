@@ -3,6 +3,9 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:agora_rtc_engine/rtc_engine.dart';
+import 'package:myonlinedoctor_movil/aplicacion/servicio_cita/CitaService.dart';
+import 'package:myonlinedoctor_movil/aplicacion/videollamada/utils/settings.dart';
+import 'package:myonlinedoctor_movil/locator.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 
@@ -22,12 +25,12 @@ class DetalleCita extends StatefulWidget {
 class _DetalleCita extends State<DetalleCita> {
   bool _validateError = false;
   ClientRole? _role = ClientRole.Broadcaster;
-
+  CitaService citaService = locator.get<CitaService>();
   @override
   Widget build(BuildContext context) {
     //DateTime? fecha = widget.cita.date;
 
-     final doctoresProvider = Provider.of<DoctoresProvider>(context);
+    final doctoresProvider = Provider.of<DoctoresProvider>(context);
     doctoresProvider.getDoctorPorId(widget.cita.doctorid);
     final doctor = doctoresProvider.doctor;
     return MaterialApp(
@@ -61,7 +64,6 @@ class _DetalleCita extends State<DetalleCita> {
                   ],
                 ),
                 SizedBox(height: 20),
-
                 ElevatedButton(
                   onPressed: () {
                     onJoin();
@@ -86,7 +88,7 @@ class _DetalleCita extends State<DetalleCita> {
       context,
       MaterialPageRoute(
         builder: (context) => CallPage(
-          channelName: 'testvicente',
+          channelName: 'videochat',
           role: _role,
         ),
       ),

@@ -59,4 +59,14 @@ class CitaService {
         "https://myonlinedoctorapi.herokuapp.com/api/cita/AceptadasPaciente" +
             id_paciente));
   }
+
+  getTokenCita(String id_cita) async {
+    var request = await http.get(Uri.parse(
+        "https://myonlinedoctorapi.herokuapp.com/api/videollamada/CitaToken" +
+            id_cita));
+    var parsed = jsonDecode(request.body);
+    print(id_cita);
+    print(parsed["token"]);
+    return parsed["token"];
+  }
 }
