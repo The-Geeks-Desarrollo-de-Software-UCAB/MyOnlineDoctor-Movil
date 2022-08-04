@@ -2,13 +2,21 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:myonlinedoctor_movil/data.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/helpers/appcolors.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/helpers/citaAgendada.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/loginPage.dart';
+import 'package:myonlinedoctor_movil/presentacion/pages/helpers/citaAceptada.dart';
+import 'package:myonlinedoctor_movil/presentacion/pages/historia_medica.dart';
+import 'package:myonlinedoctor_movil/presentacion/pages/homePageAceptada.dart';
+import 'package:provider/provider.dart';
+
+import '../../aplicacion/paciente_provider.dart';
 import '../../dominio/cita.dart';
 import '../../infraestructura/controllers/getAppointments.dart';
 import '../../infraestructura/moveAppointments.dart';
 import 'doctores_page.dart';
+import 'helpers/citaAgendada.dart';
 import 'helpers/customtext.dart';
 
 class HomePage extends StatefulWidget {
@@ -23,34 +31,97 @@ class _HomePage extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final pacienteProvider = Provider.of<PacienteProvider>(context);
+    pacienteProvider.setPaciente('pedrito@gmail.com');
+
+    final paciente = pacienteProvider.paciente;
     var size = MediaQuery.of(context).size;
     return Scaffold(
       bottomNavigationBar: Container(
         height: 60,
         color: AppColors.MAINCOLOR3,
-        child: InkWell(
-          onTap: () => {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => DoctoresPage()))
-          },
-          child: Padding(
-            padding: EdgeInsets.only(top: 9.0),
-            child: Column(
-              children: <Widget>[
-                Icon(
-                  Icons.search,
-                  color: Colors.white,
-                ),
-                Text(
-                  'Buscar doctores',
-                  style: TextStyle(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            InkWell(
+              onTap: () => {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => HistoriaMedica()))
+              },
+              child: Padding(
+                padding: EdgeInsets.only(top: 9.0),
+                child: Column(
+                  children: <Widget>[
+                    Icon(
+                      Icons.receipt_long_sharp,
                       color: Colors.white,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400),
+                    ),
+                    Text(
+                      'Historia Médica',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w400),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
-          ),
+            SizedBox(
+              width: 20,
+            ),
+            InkWell(
+              onTap: () => {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => DoctoresPage()))
+              },
+              child: Padding(
+                padding: EdgeInsets.only(top: 9.0),
+                child: Column(
+                  children: <Widget>[
+                    Icon(
+                      Icons.search,
+                      color: Colors.white,
+                    ),
+                    Text(
+                      'Buscar doctores',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w400),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(
+              width: 20,
+            ),
+            InkWell(
+              onTap: () => {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => HomePageAceptada()))
+              },
+              child: Padding(
+                padding: EdgeInsets.only(top: 9.0),
+                child: Column(
+                  children: <Widget>[
+                    Icon(
+                      Icons.calendar_month_rounded,
+                      color: Colors.white,
+                    ),
+                    Text(
+                      'Citas Aceptadas',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w400),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
       ),
       body: Stack(
@@ -84,7 +155,9 @@ class _HomePage extends State<HomePage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              'Lucia de Arias',
+                              paciente.primerNombre +
+                                  ' ' +
+                                  paciente.primerApellido,
                               style: TextStyle(
                                   color: AppColors.WHITE,
                                   fontSize: 22,
@@ -123,7 +196,7 @@ class _HomePage extends State<HomePage> {
                 ),
                 Expanded(
                     child: FutureBuilder(
-                        future: Cita.fetchCitas(''),
+                        future: Cita.fetchCitasAgendadas(id_paciente),
                         builder: (BuildContext context, snapshot) {
                           if (snapshot.connectionState ==
                               ConnectionState.waiting) {

@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:ffi';
+import 'package:http/http.dart' as http;
 
 class Paciente {
   Paciente(
@@ -28,22 +29,41 @@ class Paciente {
   
   String? imagen;
 
+  static Future<Paciente> fetchPaciente(String correo_pac) async {
+    final response = await http.get(Uri.parse(
+        'https://myonlinedoctorapi.herokuapp.com/api/paciente/porcorreo' +
+            correo_pac));
 
-  //factory Paciente.fromJson(String str) => Paciente.fromMap(json.decode(str));
+    if (response.statusCode == 200) {
+      Paciente paciente = Paciente.fromMap(response.body);
+      return paciente;
+    } else {
+      throw Exception('Error al Cargar Especialidades');
+    }
+    //final doctorResponse =Doctor.fromMap(response.body);
+  }
+
+
+  
+  
+  factory Paciente.fromMap(String str) => Paciente.fromJson(json.decode(str));
+
+
 
     
 
     factory Paciente.fromJson(Map<String, dynamic> json) => Paciente(
-        id_paciente: json["id_paciente"],
-        usuario: json["usuario"],
-        contrasena: json["contrasena"],
-        primerNombre: json["primerNombre"],
-        segundoNombre: json["segundoNombre"],
-        primerApellido: json["primerApellido"],
-        segundoApellido: json["segundoApellido"],
-        genero: json["genero"], 
+        id_paciente: json["_idPaciente"]["_id"],
+        usuario: json["_correo"]["_correo"],
+        contrasena: '',
+        primerNombre: json["_nombre"]["_primerNombre"],
+        segundoNombre: json["_nombre"]["_segundoNombre"],
+        primerApellido: json["_apellido"]["_primerApellido"],
+        segundoApellido: json["_apellido"]["_segundoApellido"],
+        genero: json["_genero"]["_genero"], 
         latitud: '', 
         longitud: '', 
+        imagen: 'https://i.ibb.co/fN9c7QF/mujer11.jpg'
         
     );
 

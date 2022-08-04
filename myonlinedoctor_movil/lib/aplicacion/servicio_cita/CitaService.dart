@@ -6,7 +6,7 @@ import 'package:uuid/uuid.dart';
 import 'package:uuid/uuid_util.dart';
 
 class CitaService {
-  String url = "http://192.168.24.241:3000/api/cita/Solicitar";
+  String url = "https://myonlinedoctorapi.herokuapp.com/api/cita/Solicitar";
   crearCita(String motivo, String tipo, String especialidad, String doctor,
       String paciente) {
     Map<String, dynamic> body = {
@@ -30,32 +30,32 @@ class CitaService {
 
   terminarCita(String id_doctor, String id_cita) async {
     return await http.put(
-        Uri.parse("http://192.168.24.241:3000/api/cita/Finalizar"),
+        Uri.parse("https://myonlinedoctorapi.herokuapp.com/api/cita/Finalizar"),
         body: {"id_doctor": id_doctor, "id_cita": id_cita});
   }
 
   calificarCita(String id, double calificacion, String id_paciente) async {
     String val = calificacion.toString();
     return await http.put(
-        Uri.parse("http://192.168.24.241:3000/api/cita/Calificar"),
+        Uri.parse("https://myonlinedoctorapi.herokuapp.com/api/cita/Calificar"),
         body: {"id_paciente": id_paciente, "id_cita": id, "calificacion": val});
   }
 
-
-  aceptarCita(String id,  String id_paciente) async {
+  aceptarCita(String id, String id_paciente) async {
     return await http.put(
-        Uri.parse("http://192.168.24.241:3000/api/cita/Aceptar"),
+        Uri.parse("https://myonlinedoctorapi.herokuapp.com/api/cita/Aceptar"),
         body: {"id_paciente": id_paciente, "id_cita": id});
   }
 
-  rechazarCita(String id,  String id_paciente) async {
+  rechazarCita(String id, String id_paciente) async {
     return await http.put(
-        Uri.parse("http://192.168.24.241:3000/api/cita/Rechazar"),
+        Uri.parse("https://myonlinedoctorapi.herokuapp.com/api/cita/Rechazar"),
         body: {"id_paciente": id_paciente, "id_cita": id});
   }
 
   agendadasPaciente(String id_paciente) async {
     return await http.get(Uri.parse(
-        "http://192.168.24.241:3000/api/cita/AgendadasPaciente" + id_paciente));
+        "https://myonlinedoctorapi.herokuapp.com/api/cita/AceptadasPaciente" +
+            id_paciente));
   }
 }

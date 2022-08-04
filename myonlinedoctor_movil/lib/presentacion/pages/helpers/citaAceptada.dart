@@ -10,20 +10,19 @@ import '../../../dominio/cita.dart';
 import '../doctores_page.dart';
 import 'customtext.dart';
 
-class CitaAgendadaCard extends StatelessWidget {
+class CitaAceptadaCard extends StatelessWidget {
   final Cita cita;
   final Color? topColor;
   final bool? isActive;
   final void Function()? onTap;
 
-  const CitaAgendadaCard(
+  const CitaAceptadaCard(
       {Key? key, required this.cita, this.topColor, this.isActive, this.onTap})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
-     final doctoresProvider = Provider.of<DoctoresProvider>(context);
+    final doctoresProvider = Provider.of<DoctoresProvider>(context);
     doctoresProvider.getDoctorPorId(cita.doctorid);
     final doctor = doctoresProvider.doctor;
     
@@ -32,7 +31,6 @@ class CitaAgendadaCard extends StatelessWidget {
     if(doctor.genero == 'M'){
       prefijo = 'Dr.';
     }
-
     dynamic route;
 
     return InkWell(
@@ -78,7 +76,7 @@ class CitaAgendadaCard extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     )),
                     TextSpan(
-                        text: prefijo + " ${doctor.nombre}  ${doctor.apellido} \n",
+                        text: prefijo + " ${doctor.nombre}   ${doctor.apellido}  \n",
                         style: TextStyle(
                             fontSize: 16,
                             color: isActive ?? false
@@ -105,9 +103,9 @@ class CitaAgendadaCard extends StatelessWidget {
                           style: ElevatedButton.styleFrom(primary: Colors.cyan),
                           onPressed: () {
                             
-                            route = MaterialPageRoute(
+                              route = MaterialPageRoute(
                                   builder: (context) =>
-                                      DetalleCitaAgendada(cita: cita));
+                                      DetalleCita(cita: cita));
                             
                             Navigator.pushAndRemoveUntil(
                                 context, route, (route) => false);

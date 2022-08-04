@@ -32,20 +32,20 @@ class Doctor {
 
   List<Object?> get props => [id, nombre, apellido, genero, imagen];
 
-  static Future<List<Doctor>> fetchDoctores(String especialidad) async {
+  static Future<List<Doctor>> fetchDoctores(String idespecialidad) async {
 
     String ruta;  
-    if(especialidad ==''){
-      ruta ='http://192.168.24.241:3000/api/doctorSpecialty/all';
+    if(idespecialidad ==''){
+      ruta ='https://myonlinedoctorapi.herokuapp.com/api/doctor/Todos';
     }else{
-      ruta = 'http://192.168.24.241:3000/api/doctorSpecialty/by'+especialidad;
+      ruta = 'https://myonlinedoctorapi.herokuapp.com/api/doctor/PorEspecialidad'+idespecialidad;
     }
     final response = await http.get(Uri.parse(ruta));
     if (response.statusCode == 200) {
       List<Doctor> list = parseDoctores(response.body);
       return list;
     } else {
-      throw Exception('Error al Cargar Especialidades');
+      throw Exception('Error al Cargar Doctores');
     }
     //final doctorResponse =Doctor.fromMap(response.body);
   }
@@ -65,14 +65,16 @@ class Doctor {
 
   factory Doctor.fromJson(Map<dynamic, dynamic> json) {
     return Doctor(
-        id: json["id_doctor"],
-        nombre: json["primerNombre"],
-        apellido: json["primerApellido"],
-        genero: json["genero"],
-        imagen: json["imagen"],
-        especialidades: json["especialidades"] == null ? [Especialidades(id: 1, nombre: 'Cardiologia')] : Especialidades.parseEspecialidadesLista(json["especialidades"]) ,
-          //  Especialidades.parseEspecialidadesLista(json["especialidades"]),
-        calificaciones: json["promedioCalificacion"]);
+        id: json["_id"]["_id"],
+        nombre: json["_nombre"]["_primerNombre"],
+        apellido: json["_apellido"]["_primerApellido"],
+        genero: 'M',
+        imagen: 'https://i.ibb.co/fN9c7QF/mujer11.jpg',
+        especialidades: 
+            Especialidades.parseEspecialidadesLista(json["_especialidad"]),
+           // [ Especialidades(id: 1, nombre: 'Cardiologia'),  Especialidades(id: 2, nombre: 'Traumatologia')],
+        calificaciones: json["_promedioCalificacion"]["_promedioCalificacion"]
+    );
   }
 
   String getEspecialidadesToString() {
@@ -90,4 +92,30 @@ class Doctor {
   List<Especialidades> getespecialidades() {
     return this.especialidades;
   }
+
+
+  static Future <Doctor> getDoctorPorId(String id) async {
+
+    final response =  await http.get(Uri.parse('https://myonlinedoctorapi.herokuapp.com/api/doctor/PorId'+ id));
+
+    final resultado = json.decode(response.body);
+
+    print(resultado[0]['doctor']['_nombre']['_primerNombre']);
+
+    return Doctor(
+      apellido:resultado[0]['doctor']['_apellido']['_primerApellido'], 
+      
+      especialidades:Especialidades.parseEspecialidadesLista(resultado[0]['doctor']['_especialidad']),
+       genero: resultado[0]['genero'],
+       id: resultado[0]['doctor']['_id']['_id'], 
+       imagen: resultado[0]['imagen'], 
+       nombre: resultado[0]['doctor']['_nombre']['_primerNombre'],
+       );
+  
+
+  }
+
+  
+
+
 }
