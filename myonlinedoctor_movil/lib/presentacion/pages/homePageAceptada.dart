@@ -28,7 +28,7 @@ class _HomePageAceptada extends State<HomePageAceptada> {
   @override
   Widget build(BuildContext context) {
     final pacienteProvider = Provider.of<PacienteProvider>(context);
-    pacienteProvider.setPaciente('pedrito@gmail.com');
+   
 
     final paciente  = pacienteProvider.paciente;
     var size = MediaQuery.of(context).size;
@@ -174,6 +174,11 @@ class _HomePageAceptada extends State<HomePageAceptada> {
                     child: FutureBuilder(
                         future: Cita.fetchCitas(paciente.id_paciente),
                         builder: (BuildContext context, snapshot) {
+                          if(!snapshot.hasData){
+                            return const Center(
+                                child: Text('No hay citas Aceptadas'));
+                          }
+
                           if (snapshot.connectionState ==
                               ConnectionState.waiting) {
                             return const Center(

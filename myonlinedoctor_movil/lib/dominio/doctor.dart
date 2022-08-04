@@ -65,15 +65,15 @@ class Doctor {
 
   factory Doctor.fromJson(Map<dynamic, dynamic> json) {
     return Doctor(
-        id: json["_id"]["_id"],
-        nombre: json["_nombre"]["_primerNombre"],
-        apellido: json["_apellido"]["_primerApellido"],
-        genero: 'M',
-        imagen: 'https://i.ibb.co/fN9c7QF/mujer11.jpg',
+        id: json["doctor"]["_id"]["_id"],
+        nombre: json["doctor"]["_nombre"]["_primerNombre"],
+        apellido: json["doctor"]["_apellido"]["_primerApellido"],
+        genero: json["genero"],
+        imagen: json["imagen"],
         especialidades: 
-            Especialidades.parseEspecialidadesLista(json["_especialidad"]),
+            Especialidades.parseEspecialidadesLista(json["doctor"]["_especialidad"]),
            // [ Especialidades(id: 1, nombre: 'Cardiologia'),  Especialidades(id: 2, nombre: 'Traumatologia')],
-        calificaciones: json["_promedioCalificacion"]["_promedioCalificacion"]
+        calificaciones: json["doctor"]["_promedioCalificacion"]["_promedioCalificacion"]==null ?   0 : (json["doctor"]["_promedioCalificacion"]["_promedioCalificacion"]).toDouble()
     );
   }
 

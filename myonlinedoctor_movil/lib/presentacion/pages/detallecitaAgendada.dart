@@ -3,6 +3,7 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:agora_rtc_engine/rtc_engine.dart';
+import 'package:myonlinedoctor_movil/aplicacion/paciente_provider.dart';
 import 'package:myonlinedoctor_movil/data.dart';
 import 'package:myonlinedoctor_movil/dominio/doctor.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/resultado_cita_Acept_Rech.dart';
@@ -35,6 +36,8 @@ class _DetalleCitaAgendada extends State<DetalleCitaAgendada> {
     final doctoresProvider = Provider.of<DoctoresProvider>(context);
     doctoresProvider.getDoctorPorId(widget.cita.doctorid);
     final doctor = doctoresProvider.doctor;
+    final pacienteProvider = Provider.of<PacienteProvider>(context);
+
     
     return MaterialApp(
       
@@ -74,7 +77,7 @@ class _DetalleCitaAgendada extends State<DetalleCitaAgendada> {
                     ElevatedButton(
                       onPressed: () {
                         citaService.rechazarCita(
-                            widget.cita.idCita, id_paciente);
+                            widget.cita.idCita,  pacienteProvider.paciente.id_paciente);
 
                         final route = MaterialPageRoute(
                             builder: (context) => ResultadoAceptarRechazarCita(
@@ -93,7 +96,7 @@ class _DetalleCitaAgendada extends State<DetalleCitaAgendada> {
                     ElevatedButton(
                       onPressed: () {
                         citaService.aceptarCita(
-                            widget.cita.idCita, id_paciente);
+                            widget.cita.idCita, pacienteProvider.paciente.id_paciente);
                         final route = MaterialPageRoute(
                             builder: (context) => ResultadoAceptarRechazarCita(
                                   resultado: 'CITA ACEPTADA',

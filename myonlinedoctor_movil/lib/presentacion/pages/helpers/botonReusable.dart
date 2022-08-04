@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/helpers/appcolors.dart';
+import 'package:provider/provider.dart';
 
-Widget botonReusable(BuildContext context, bool isLogin, Function onTap) {
+import '../../../aplicacion/paciente_provider.dart';
+
+Widget botonReusable(BuildContext context, bool isLogin, Function onTap, String email) {
+  final pacienteProvider = Provider.of<PacienteProvider>(context);
+    pacienteProvider.setPaciente(email);
   return ElevatedButton(
     child: Text(isLogin ? 'ENTRAR' : 'REGISTRATE'),
     onPressed: () => {
