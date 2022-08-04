@@ -92,4 +92,30 @@ class Doctor {
   List<Especialidades> getespecialidades() {
     return this.especialidades;
   }
+
+
+  static Future <Doctor> getDoctorPorId(String id) async {
+
+    final response =  await http.get(Uri.parse('https://myonlinedoctorapi.herokuapp.com/api/doctor/PorId'+ id));
+
+    final resultado = json.decode(response.body);
+
+    print(resultado[0]['doctor']['_nombre']['_primerNombre']);
+
+    return Doctor(
+      apellido:resultado[0]['doctor']['_apellido']['_primerApellido'], 
+      
+      especialidades:Especialidades.parseEspecialidadesLista(resultado[0]['doctor']['_especialidad']),
+       genero: resultado[0]['genero'],
+       id: resultado[0]['doctor']['_id']['_id'], 
+       imagen: resultado[0]['imagen'], 
+       nombre: resultado[0]['doctor']['_nombre']['_primerNombre'],
+       );
+  
+
+  }
+
+  
+
+
 }

@@ -4,7 +4,9 @@ import 'dart:developer';
 
 import 'package:agora_rtc_engine/rtc_engine.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:provider/provider.dart';
 
+import '../../aplicacion/doctores_provider.dart';
 import '../../aplicacion/videollamada/call.dart';
 import '../../dominio/cita.dart';
 import 'detalles_doctor.dart';
@@ -24,6 +26,10 @@ class _DetalleCita extends State<DetalleCita> {
   @override
   Widget build(BuildContext context) {
     //DateTime? fecha = widget.cita.date;
+
+     final doctoresProvider = Provider.of<DoctoresProvider>(context);
+    doctoresProvider.getDoctorPorId(widget.cita.doctorid);
+    final doctor = doctoresProvider.doctor;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
@@ -37,7 +43,7 @@ class _DetalleCita extends State<DetalleCita> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                //FotoNombre(doctor: widget.cita.doctor),
+                FotoNombre(doctor: doctor),
                 SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

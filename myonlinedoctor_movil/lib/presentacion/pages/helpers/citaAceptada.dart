@@ -3,7 +3,9 @@ import 'package:myonlinedoctor_movil/presentacion/pages/detallecita.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/detallecitaAgendada.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/helpers/appcolors.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/loginPage.dart';
+import 'package:provider/provider.dart';
 
+import '../../../aplicacion/doctores_provider.dart';
 import '../../../dominio/cita.dart';
 import '../doctores_page.dart';
 import 'customtext.dart';
@@ -20,12 +22,15 @@ class CitaAceptadaCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final doctoresProvider = Provider.of<DoctoresProvider>(context);
+    doctoresProvider.getDoctorPorId(cita.doctorid);
+    final doctor = doctoresProvider.doctor;
+    
     String prefijo = 'Dra.';
 
-    /*if(cita.doctor.genero == 'M'){
+    if(doctor.genero == 'M'){
       prefijo = 'Dr.';
-    }*/
-
+    }
     dynamic route;
 
     return InkWell(
@@ -71,7 +76,7 @@ class CitaAceptadaCard extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     )),
                     TextSpan(
-                        text: prefijo + " ${cita}  \n",
+                        text: prefijo + " ${doctor.nombre}   ${doctor.apellido}  \n",
                         style: TextStyle(
                             fontSize: 16,
                             color: isActive ?? false
