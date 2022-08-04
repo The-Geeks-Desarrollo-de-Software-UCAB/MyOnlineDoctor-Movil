@@ -6,7 +6,9 @@ import 'package:myonlinedoctor_movil/presentacion/pages/helpers/appcolors.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/helpers/citaAceptada.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/historia_medica.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/homePageAceptada.dart';
+import 'package:provider/provider.dart';
 
+import '../../aplicacion/paciente_provider.dart';
 import '../../dominio/cita.dart';
 import '../../infraestructura/controllers/getAppointments.dart';
 import '../../infraestructura/moveAppointments.dart';
@@ -26,6 +28,11 @@ class _HomePage extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+
+    final pacienteProvider = Provider.of<PacienteProvider>(context);
+    pacienteProvider.setPaciente('pedrito@gmail.com');
+
+    final paciente  = pacienteProvider.paciente;
     var size = MediaQuery.of(context).size;
     return Scaffold(
       bottomNavigationBar: Container(
@@ -145,7 +152,7 @@ class _HomePage extends State<HomePage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              'Lucia de Arias',
+                              paciente.primerNombre + ' '+ paciente.primerApellido,
                               style: TextStyle(
                                   color: AppColors.WHITE,
                                   fontSize: 22,

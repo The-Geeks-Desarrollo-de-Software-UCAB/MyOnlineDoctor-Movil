@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:myonlinedoctor_movil/data.dart';
+import 'package:myonlinedoctor_movil/dominio/paciente.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/helpers/appcolors.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/helpers/citaAceptada.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/homePageAgendada.dart';
+import 'package:provider/provider.dart';
 
+import '../../aplicacion/paciente_provider.dart';
 import '../../dominio/cita.dart';
 import '../../infraestructura/controllers/getAppointments.dart';
 import '../../infraestructura/moveAppointments.dart';
@@ -24,6 +27,10 @@ class _HomePageAceptada extends State<HomePageAceptada> {
 
   @override
   Widget build(BuildContext context) {
+    final pacienteProvider = Provider.of<PacienteProvider>(context);
+    pacienteProvider.setPaciente('pedrito@gmail.com');
+
+    final paciente  = pacienteProvider.paciente;
     var size = MediaQuery.of(context).size;
     return Scaffold(
       bottomNavigationBar: Container(
@@ -143,7 +150,7 @@ class _HomePageAceptada extends State<HomePageAceptada> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              'Lucia de Arias',
+                              paciente.primerNombre + ' ' + paciente.primerApellido,
                               style: TextStyle(
                                   color: AppColors.WHITE,
                                   fontSize: 22,
@@ -165,7 +172,7 @@ class _HomePageAceptada extends State<HomePageAceptada> {
                 ),
                 Expanded(
                     child: FutureBuilder(
-                        future: Cita.fetchCitas(id_paciente),
+                        future: Cita.fetchCitas(paciente.id_paciente),
                         builder: (BuildContext context, snapshot) {
                           if (snapshot.connectionState ==
                               ConnectionState.waiting) {

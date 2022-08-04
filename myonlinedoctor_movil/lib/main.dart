@@ -12,6 +12,7 @@ import 'package:provider/provider.dart';
 
 import 'aplicacion/doctores_provider.dart';
 import 'aplicacion/especialidades_provider.dart';
+import 'aplicacion/paciente_provider.dart';
 import 'dominio/especialidades.dart';
 import 'presentacion/pages/loginPage.dart';
 import 'presentacion/pages/ratingPage.dart';
@@ -32,7 +33,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
          ChangeNotifierProvider(create: (_)=> EspecialidadesProvider(), lazy: false),
-          ChangeNotifierProvider(create: (_)=> DoctoresProvider(), lazy: false),
+         ChangeNotifierProvider(create: (_)=> DoctoresProvider(), lazy: false),
+         ChangeNotifierProvider(create: (_)=> PacienteProvider(), lazy: false),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

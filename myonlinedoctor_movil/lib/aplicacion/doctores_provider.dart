@@ -49,6 +49,8 @@ class DoctoresProvider extends ChangeNotifier {
     doctor.id = resultado[0]['doctor']['_id']['_id'];
     doctor.imagen = resultado[0]['imagen'];
     doctor.nombre = resultado[0]['doctor']['_nombre']['_primerNombre'];
+
+     notifyListeners();
   
 
   }
