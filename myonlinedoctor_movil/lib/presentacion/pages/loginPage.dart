@@ -63,10 +63,7 @@ class _LoginPage extends State<LoginPage> {
                   botonReusable(context, true, () {
 
 
-                      pacienteProvider.setPaciente(_emailTextController.text);
-                      id_paciente = pacienteProvider.paciente.id_paciente;
-                      nombre_paciente = pacienteProvider.paciente.primerNombre;
-                      apellido_paciente = pacienteProvider.paciente.primerApellido;
+                      SetValores.SetValoresPaciente(_emailTextController.text);
                     FirebaseAuth.instance
                         .signInWithEmailAndPassword(
                             email: _emailTextController.text,

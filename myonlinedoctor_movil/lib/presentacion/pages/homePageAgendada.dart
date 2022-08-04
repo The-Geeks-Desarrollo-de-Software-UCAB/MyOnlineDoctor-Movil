@@ -31,12 +31,7 @@ class _HomePage extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final pacienteProvider = Provider.of<PacienteProvider>(context);
 
-    
-    
-
-    final paciente = pacienteProvider.paciente;
     var size = MediaQuery.of(context).size;
     return Scaffold(
       bottomNavigationBar: Container(
