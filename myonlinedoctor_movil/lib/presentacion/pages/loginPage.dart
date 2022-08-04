@@ -30,7 +30,7 @@ class _LoginPage extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     final pacienteProvider = Provider.of<PacienteProvider>(context);
-    
+    pacienteProvider.setPaciente('pedrito@gmail.com');
     return Scaffold(
         body: Container(
       child: Stack(
@@ -67,7 +67,7 @@ class _LoginPage extends State<LoginPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => HomePageAceptada( email: _emailTextController.text,),
+                            builder: (context) => HomePageAceptada(),
                           ));
                     }).onError((error, stackTrace) {
                       showDialog(

@@ -4,10 +4,8 @@ import 'package:myonlinedoctor_movil/data.dart';
 import 'package:myonlinedoctor_movil/dominio/registro_medico.dart';
 import 'package:myonlinedoctor_movil/locator.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/lista_registros.dart';
-import 'package:provider/provider.dart';
 
 import '../../aplicacion/listadoctores.dart';
-import '../../aplicacion/paciente_provider.dart';
 import '../../aplicacion/search_delegate.dart';
 import '../../dominio/doctor.dart';
 import '../../dominio/especialidades.dart';
@@ -27,8 +25,6 @@ class _HistoriaMedica extends State<HistoriaMedica> {
   @override
   Widget build(BuildContext context) {
 
-     final pacienteProvider = Provider.of<PacienteProvider>(context);
-
     return Scaffold(
         bottomNavigationBar: Container(
           height: 60,
@@ -36,7 +32,7 @@ class _HistoriaMedica extends State<HistoriaMedica> {
           child: InkWell(
             onTap: () => {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => HomePage(email: pacienteProvider.paciente.usuario)))
+                  context, MaterialPageRoute(builder: (context) => HomePage()))
             },
             child: Padding(
               padding: EdgeInsets.only(top: 9.0),
@@ -77,7 +73,7 @@ class _HistoriaMedica extends State<HistoriaMedica> {
           leading:IconButton(
               onPressed:(){
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => HomePage(email: pacienteProvider.paciente.usuario)));
+                    MaterialPageRoute(builder: (context) => HomePage()));
               }, 
               icon:Icon(Icons.arrow_back)) ,
         ),

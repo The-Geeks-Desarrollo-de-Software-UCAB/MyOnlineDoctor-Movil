@@ -38,7 +38,7 @@ class Paciente {
       Paciente paciente = Paciente.fromMap(response.body);
       return paciente;
     } else {
-      throw Exception('Error al Cargar Paciente');
+      throw Exception('Error al Cargar Especialidades');
     }
     //final doctorResponse =Doctor.fromMap(response.body);
   }

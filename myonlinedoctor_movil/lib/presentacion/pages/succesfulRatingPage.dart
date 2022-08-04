@@ -2,18 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:myonlinedoctor_movil/presentacion/pages/homePageAgendada.dart';
-import 'package:provider/provider.dart';
 
-import '../../aplicacion/paciente_provider.dart';
 import 'doctores_page.dart';
 import 'helpers/appcolors.dart';
 
 class SuccesfulRatingPage extends StatelessWidget {
-
-   
   @override
   Widget build(BuildContext context) {
-    final pacienteProvider = Provider.of<PacienteProvider>(context);
     return Scaffold(
       bottomNavigationBar: Container(
         height: 60,
@@ -21,7 +16,7 @@ class SuccesfulRatingPage extends StatelessWidget {
         child: InkWell(
           onTap: () => {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => HomePage(email: pacienteProvider.paciente.usuario,)))
+                context, MaterialPageRoute(builder: (context) => HomePage()))
           },
           child: Padding(
             padding: EdgeInsets.only(top: 9.0),

@@ -5,7 +5,8 @@ import 'package:provider/provider.dart';
 import '../../../aplicacion/paciente_provider.dart';
 
 Widget botonReusable(BuildContext context, bool isLogin, Function onTap, String email) {
- 
+  final pacienteProvider = Provider.of<PacienteProvider>(context);
+    pacienteProvider.setPaciente(email);
   return ElevatedButton(
     child: Text(isLogin ? 'ENTRAR' : 'REGISTRATE'),
     onPressed: () => {
